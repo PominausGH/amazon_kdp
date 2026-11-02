@@ -2,6 +2,7 @@
 listing metadata and preview PNGs. Usage: python -m kdp.book books/foo.json"""
 from __future__ import annotations
 
+import base64
 import json
 import math
 import random
@@ -201,19 +202,17 @@ class Builder:
 
     # ---------- cover ----------
 
-    def build_cover(self) -> Page:
-        c = self.cfg
-        n = len(self.pages)
-        cw, chh = specs.cover_size(self.trim, n)
-        P = specs.PT
-        p = Page(cw, chh, bg=c.get("cover_bg", "#fff4d6"))
-        bleed, spine = specs.COVER_BLEED * P, specs.spine_width(n) * P
-        back_x, spine_x = bleed, bleed + self.w_in * P
-        front_x = spine_x + spine
-        fw, fh = self.w_in * P, self.h_in * P
-        accent = c.get("cover_accent", "#ff6b6b")
-        safe = 0.375 * P  # keep text well clear of trim
-        # front: title band
+    def sample_pages(self, k: int) -> list[Page]:
+        """Representative content pages (skips front matter, blank backs and answers)."""
+        content = [pg for pg in self.pages[4:] if len(pg.parts) > 1]
+        content = content[: max(1, int(len(content) * .7))]
+        if not content:
+            return []
+        step = max(1, len(content) // k)
+        return content[::step][:k]
+
+    def _front_vector(self, p, c, front_x, fw, fh, bleed, safe, accent):
+        # title band
         p.add(f'<rect x="{front_x:.1f}" y="0" width="{fw + bleed:.1f}" height="{bleed + fh * .30:.1f}" fill="{accent}"/>')
         lines = c.get("title_lines", [c["title"]])
         ty = bleed + safe + 52
@@ -244,6 +243,50 @@ class Builder:
             for k, part in enumerate(c["badge"].split("\n")):
                 p.text(bx, by - 4 + k * 22, part, size=19)
         p.text(front_x + fw / 2, bleed + fh - safe - 8, c.get("cover_tagline", ""), size=20, fill="#222")
+
+    def _front_ai(self, p, c, front_x, fw, fh, bleed, safe, accent, full_h):
+        img = ROOT / c["cover_art"]
+        jpg = subprocess.run(["magick", str(img), "-quality", "92", "jpg:-"], capture_output=True, check=True).stdout
+        href = "data:image/jpeg;base64," + base64.b64encode(jpg).decode()
+        p.add(f'<image x="{front_x:.1f}" y="0" width="{fw + bleed:.1f}" height="{full_h:.1f}" '
+              f'preserveAspectRatio="xMidYMid slice" href="{href}"/>')
+        lines = c.get("title_lines", [c["title"]])
+        sizes = [min(70, (fw - 2 * safe - 40) / (len(l) * .74)) for l in lines]
+        cover_sub = c.get("cover_subtitle", c.get("subtitle", ""))
+        sub_size = min(22, (fw - 2 * safe - 50) / (len(cover_sub) * .56)) if cover_sub else 0
+        box_h = sum(s * 1.02 for s in sizes) + (sub_size * 2.2 if cover_sub else 0) + 40
+        p.add(f'<rect x="{front_x + safe:.1f}" y="{bleed + safe:.1f}" width="{fw - 2 * safe:.1f}" height="{box_h:.1f}" '
+              f'rx="30" fill="#fff" fill-opacity=".93" stroke="#000" stroke-width="4"/>')
+        ty = bleed + safe + 14
+        for line, size in zip(lines, sizes):
+            ty += size * .95
+            p.text(front_x + fw / 2, ty, line.upper(), size=size, fill=accent,
+                   extra='stroke="#000" stroke-width="4" paint-order="stroke" stroke-linejoin="round"')
+            ty += size * .07
+        if cover_sub:
+            p.text(front_x + fw / 2, ty + sub_size * 1.35, cover_sub, size=sub_size, fill="#222")
+        if c.get("badge"):
+            bx, by = front_x + fw - safe - 62, bleed + fh - safe - 62
+            p.add(f'<circle cx="{bx:.1f}" cy="{by:.1f}" r="58" fill="#ffd93d" stroke="#000" stroke-width="4"/>')
+            for k, part in enumerate(c["badge"].split("\n")):
+                p.text(bx, by - 4 + k * 23, part, size=21)
+
+    def build_cover(self) -> Page:
+        c = self.cfg
+        n = len(self.pages)
+        cw, chh = specs.cover_size(self.trim, n)
+        P = specs.PT
+        p = Page(cw, chh, bg=c.get("cover_bg", "#fff4d6"))
+        bleed, spine = specs.COVER_BLEED * P, specs.spine_width(n) * P
+        back_x, spine_x = bleed, bleed + self.w_in * P
+        front_x = spine_x + spine
+        fw, fh = self.w_in * P, self.h_in * P
+        accent = c.get("cover_accent", "#ff6b6b")
+        safe = 0.375 * P  # keep text well clear of trim
+        if c.get("cover_art"):
+            self._front_ai(p, c, front_x, fw, fh, bleed, safe, accent, chh * P)
+        else:
+            self._front_vector(p, c, front_x, fw, fh, bleed, safe, accent)
         # back
         p.add(f'<rect x="0" y="0" width="{spine_x:.1f}" height="{chh * P:.1f}" fill="{c.get("back_bg", "#fff")}"/>')
         by = bleed + safe + 50
@@ -254,8 +297,12 @@ class Builder:
                 p.text(back_x + safe + 20, by, line, size=15, weight="normal", anchor="start", fill="#222")
                 by += 22
             by += 12
-        if self.cover_art:
-            p.add(fit(self.cover_art[-1], 400, 400, back_x + fw * .25, by + 10, fw * .5, fh * .3))
+        samples = self.sample_pages(3)
+        if samples:
+            p.text(back_x + fw / 2, by + 24, "Peek inside:", size=18, fill="#222")
+            tw = (fw - 2 * safe - 40) / 3
+            for k, sp in enumerate(samples):
+                p.add(page_thumb(sp, back_x + safe + k * (tw + 20), by + 40, tw))
         # barcode keep-clear area (KDP prints it here)
         bw, bh = specs.BARCODE_BOX[0] * P, specs.BARCODE_BOX[1] * P
         p.add(f'<rect x="{spine_x - safe - bw:.1f}" y="{bleed + fh - safe - bh:.1f}" width="{bw:.1f}" height="{bh:.1f}" fill="#fff"/>')
@@ -267,6 +314,31 @@ class Builder:
                   f'font-family="{FONT}" font-weight="bold" font-size="{min(14, spine * .55):.1f}" fill="#fff">'
                   f'{escape(c["title"].upper())}</text>')
         return p
+
+
+def page_thumb(pg: Page, x, y, w) -> str:
+    """Embed a real interior page, scaled, with a border and soft shadow."""
+    h = w * pg.h / pg.w
+    inner = "".join(pg.parts)
+    return (f'<rect x="{x + 4:.1f}" y="{y + 5:.1f}" width="{w:.1f}" height="{h:.1f}" fill="#000" fill-opacity=".18"/>'
+            f'<svg x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" viewBox="0 0 {pg.w:.1f} {pg.h:.1f}">'
+            f'<rect width="100%" height="100%" fill="#fff"/>{inner}</svg>'
+            f'<rect x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h:.1f}" fill="none" stroke="#000" stroke-width="1.5"/>')
+
+
+def aplus_banner(b: "Builder", out_png: Path):
+    """970x600 A+ Content image: three real pages side by side."""
+    pg = Page(970 / 72, 600 / 72, bg=b.cfg.get("cover_bg", "#fff"))
+    pg.text(485, 62, b.cfg.get("aplus_heading", "Take a peek inside!"), size=40,
+            fill=b.cfg.get("cover_accent", "#222"), extra='stroke="#000" stroke-width="2" paint-order="stroke"')
+    tw, gap = 290, 25
+    for k, sp in enumerate(b.sample_pages(3)):
+        pg.add(page_thumb(sp, 485 - 1.5 * tw - gap + k * (tw + gap), 100, tw))
+    pg.text(485, 560, b.cfg.get("aplus_caption", b.cfg.get("cover_tagline", "")), size=24, fill="#222")
+    svg = out_png.with_suffix(".svg")
+    svg.write_text(pg.render())
+    subprocess.run(["rsvg-convert", "-w", "1940", "-o", str(out_png), str(svg)], check=True)
+    svg.unlink()
 
 
 def _wrap(text: str, width: int) -> list[str]:
@@ -304,6 +376,7 @@ def build(recipe: Path) -> Path:
     render_pdf(b.pages, out / "svg_interior", out / "interior.pdf")
     cover = b.build_cover()
     render_pdf([cover], out / "svg_cover", out / "cover.pdf")
+    aplus_banner(b, out / "aplus_peek_inside.png")
     n = len(b.pages)
     price = cfg.get("price_usd", 9.99)
     listing = {
