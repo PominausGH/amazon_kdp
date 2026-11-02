@@ -1,0 +1,60 @@
+{
+  "title": "Christmas Activity Book for Kids Ages 4-8",
+  "title_lines": ["Christmas", "Activity Book"],
+  "subtitle": "Word Search, Dot to Dot and Mazes: 40 Holiday Puzzles with Answers",
+  "cover_subtitle": "Word Search · Dot to Dot · Mazes",
+  "badge": "AGES\n4-8",
+  "cover_tagline": "40 holiday puzzles · Answers included",
+  "cover_accent": "#2a9d8f",
+  "cover_bg": "#fff4f4",
+  "back_heading": "A puzzle for every day of the holidays!",
+  "back_text": [
+    "12 Christmas word searches, 12 dot-to-dot pictures and 16 mazes, from easy to tricky.",
+    "Perfect for road trips, rainy days and the countdown to Christmas. All answers at the back."
+  ],
+  "seed": 1225,
+  "sections": [
+    {"type": "wordsearch", "size": 11, "diagonal": false, "puzzles": [
+      {"title": "Santa's Workshop", "words": ["SANTA", "ELF", "TOYS", "SLEIGH", "GIFT", "BOW", "LIST", "NICE"]},
+      {"title": "Snow Day", "words": ["SNOW", "SLED", "MITTEN", "SCARF", "HAT", "COLD", "ICE", "BOOTS"]},
+      {"title": "Christmas Tree", "words": ["TREE", "STAR", "LIGHTS", "BAUBLE", "TINSEL", "ANGEL", "PINE", "GLOW"]},
+      {"title": "Yummy Treats", "words": ["COOKIE", "CANDY", "CAKE", "MILK", "PIE", "COCOA", "JAM", "NUTS"]},
+      {"title": "Reindeer", "words": ["DASHER", "DANCER", "PRANCER", "VIXEN", "COMET", "CUPID", "RUDOLPH"]},
+      {"title": "Winter Animals", "words": ["PENGUIN", "OWL", "FOX", "SEAL", "BEAR", "HARE", "ROBIN", "MOOSE"]},
+      {"title": "Christmas Eve", "words": ["STOCKING", "SOCK", "BED", "MOON", "WISH", "BELL", "DREAM", "NIGHT"]},
+      {"title": "Decorations", "words": ["WREATH", "HOLLY", "CANDLE", "RIBBON", "GARLAND", "STAR", "BELLS"]},
+      {"title": "Presents", "words": ["BOX", "PAPER", "TAPE", "TAG", "BIKE", "BALL", "BOOK", "GAME"]},
+      {"title": "Snowman", "words": ["CARROT", "COAL", "BUTTON", "STICK", "SNOW", "ROLL", "HAT", "SMILE"]},
+      {"title": "Family Fun", "words": ["SING", "PLAY", "HUG", "BAKE", "SHARE", "LAUGH", "GAMES", "LOVE"]},
+      {"title": "Merry Christmas", "words": ["MERRY", "JOLLY", "CHEER", "PEACE", "JOY", "KIND", "GIVE", "HAPPY"]}
+    ]},
+    {"type": "dots", "points": 26, "shapes": ["star", "heart", "house", "rocket", "fish", "diamond",
+      "cat", "dinosaur", "truck", "sailboat", "whale", "flower"]},
+    {"type": "maze", "levels": [
+      {"count": 8, "cols": 8, "rows": 10, "stroke": 5},
+      {"count": 8, "cols": 12, "rows": 15, "stroke": 4}
+    ]}
+  ],
+  "cover_items": [["CHRISTMAS TREE", {"a": "#55c271", "b": "#ffd93d", "c": "#e63946", "d": "#4d96ff", "e": "#a0522d"}],
+                  ["SNOWMAN", {"a": "#ffffff", "b": "#e63946", "d": "#ffa45b", "e": "#333333"}],
+                  ["STOCKING", {"a": "#e63946", "c": "#55c271", "e": "#ffffff"}],
+                  ["PENGUIN", {"b": "#ffffff", "d": "#ffa45b", "e": "#333333"}]],
+  "price_usd": 9.99,
+  "reading_age": "4-8",
+  "keywords": [
+    "christmas activity book for kids 4-8",
+    "christmas word search for kids",
+    "christmas dot to dot kids",
+    "christmas mazes for kids",
+    "stocking stuffers for kids 6-8",
+    "holiday puzzle book kids with answers",
+    "christmas gifts for kids travel activities"
+  ],
+  "categories": [
+    "Children's Books > Activities, Crafts & Games > Activity Books",
+    "Children's Books > Holidays & Celebrations > Christmas"
+  ],
+  "description_html": "<p><b>40 Christmas puzzles for ages 4-8.</b></p><ul><li>12 Christmas word searches (across and down only, great for new readers)</li><li>12 dot-to-dot pictures</li><li>16 mazes from easy to medium</li><li>All answers at the back</li></ul><p>A perfect stocking stuffer.</p>",
+  "ai_disclosure": {"images": "Cover art AI-generated (vector art written by an AI model); puzzles algorithmic", "text": "AI-generated"},
+  "niche_test": {"niche": "Christmas activity ages 4-8", "hypothesis": "Seasonal + activity format; tests the bundle angle"}
+}

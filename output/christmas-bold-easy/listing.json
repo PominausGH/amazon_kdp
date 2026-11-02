@@ -1,0 +1,44 @@
+{
+  "title": "Christmas Bold & Easy Coloring Book for Kids",
+  "subtitle": "21 Big, Simple Holiday Pictures for Toddlers & Kids Ages 2-5",
+  "author": "Crayon Cove Press",
+  "description_html": "<p><b>Big, simple Christmas pictures for little hands.</b></p><p>21 bold and easy holiday designs with thick outlines and large spaces: perfect first colouring for toddlers and preschoolers.</p><ul><li>21 single-sided pages (blank backs, no bleed-through)</li><li>Snowman, reindeer, gingerbread, stocking, presents, Christmas tree and more</li><li>Each picture is labelled with a big hollow word to colour too</li><li>Large 8.5 x 11 inch pages</li></ul><p>A great stocking stuffer for ages 2-5.</p>",
+  "keywords": [
+    "christmas coloring book for toddlers",
+    "bold and easy christmas coloring book kids",
+    "stocking stuffers for toddlers 2-4",
+    "simple christmas coloring pages preschool",
+    "christmas activity book kids ages 2-5",
+    "big simple coloring book thick lines",
+    "christmas gifts for toddlers boys girls"
+  ],
+  "categories": [
+    "Children's Books > Activities, Crafts & Games > Coloring Books",
+    "Children's Books > Holidays & Celebrations > Christmas"
+  ],
+  "reading_age": "2-5",
+  "trim": "8.5x11",
+  "bleed": false,
+  "paper": "white",
+  "interior": "black & white",
+  "cover_finish": "matte",
+  "low_content_book": false,
+  "page_count": 46,
+  "cover_size_in": [
+    17.3536,
+    11.25
+  ],
+  "price_usd": 9.99,
+  "est_print_cost_usd": 2.84,
+  "est_royalty_usd": 3.15,
+  "ai_disclosure": {
+    "images": "AI-generated (vector art written by an AI model)",
+    "text": "AI-generated",
+    "note": "Disclose as AI-generated in KDP's content questions. Check this matches your view before publishing."
+  },
+  "niche_test": {
+    "niche": "Christmas bold & easy, ages 2-5",
+    "hypothesis": "Q4 seasonal demand beats competition for simple toddler books",
+    "deadline": "Submit by 2026-11-05 to be live for peak season"
+  }
+}

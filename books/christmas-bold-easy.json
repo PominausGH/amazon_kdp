@@ -1,0 +1,92 @@
+{
+  "title": "Christmas Bold & Easy Coloring Book for Kids",
+  "title_lines": [
+    "Christmas",
+    "Bold & Easy",
+    "Coloring Book"
+  ],
+  "subtitle": "21 Big, Simple Holiday Pictures for Toddlers & Kids Ages 2-5",
+  "badge": "AGES\n2-5",
+  "cover_tagline": "Thick lines · Big shapes · One picture per page",
+  "cover_accent": "#e63946",
+  "cover_bg": "#f1faee",
+  "back_heading": "Merry Christmas, little artist!",
+  "back_text": [
+    "21 bold, simple Christmas pictures made for small hands: snowmen, reindeer, gingerbread, stockings, presents and more.",
+    "Thick outlines and big spaces make colouring easy for toddlers and preschoolers. Every picture is printed on its own page with a blank back, so markers won't bleed through.",
+    "A perfect stocking stuffer for ages 2 to 5."
+  ],
+  "seed": 2026,
+  "sections": [
+    {
+      "type": "bold",
+      "themes": [
+        "christmas"
+      ],
+      "single_sided": true,
+      "stroke": 8
+    }
+  ],
+  "price_usd": 9.99,
+  "reading_age": "2-5",
+  "keywords": [
+    "christmas coloring book for toddlers",
+    "bold and easy christmas coloring book kids",
+    "stocking stuffers for toddlers 2-4",
+    "simple christmas coloring pages preschool",
+    "christmas activity book kids ages 2-5",
+    "big simple coloring book thick lines",
+    "christmas gifts for toddlers boys girls"
+  ],
+  "categories": [
+    "Children's Books > Activities, Crafts & Games > Coloring Books",
+    "Children's Books > Holidays & Celebrations > Christmas"
+  ],
+  "description_html": "<p><b>Big, simple Christmas pictures for little hands.</b></p><p>21 bold and easy holiday designs with thick outlines and large spaces: perfect first colouring for toddlers and preschoolers.</p><ul><li>21 single-sided pages (blank backs, no bleed-through)</li><li>Snowman, reindeer, gingerbread, stocking, presents, Christmas tree and more</li><li>Each picture is labelled with a big hollow word to colour too</li><li>Large 8.5 x 11 inch pages</li></ul><p>A great stocking stuffer for ages 2-5.</p>",
+  "ai_disclosure": {
+    "images": "AI-generated (vector art written by an AI model)",
+    "text": "AI-generated",
+    "note": "Disclose as AI-generated in KDP's content questions. Check this matches your view before publishing."
+  },
+  "niche_test": {
+    "niche": "Christmas bold & easy, ages 2-5",
+    "hypothesis": "Q4 seasonal demand beats competition for simple toddler books",
+    "deadline": "Submit by 2026-11-05 to be live for peak season"
+  },
+  "cover_subtitle": "21 Big, Simple Holiday Pictures for Little Hands",
+  "cover_items": [
+    [
+      "CHRISTMAS TREE",
+      {
+        "a": "#55c271",
+        "b": "#ffd93d",
+        "c": "#e63946",
+        "d": "#4d96ff",
+        "e": "#a0522d"
+      }
+    ],
+    [
+      "GINGERBREAD",
+      {
+        "a": "#d2914f",
+        "b": "#e63946",
+        "c": "#55c271"
+      }
+    ],
+    [
+      "REINDEER",
+      {
+        "a": "#e63946",
+        "b": "#a0522d",
+        "e": "#f1d1a8"
+      }
+    ],
+    [
+      "PRESENT",
+      {
+        "a": "#e63946",
+        "b": "#ffd93d"
+      }
+    ]
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "title": "Christmas Activity Book for Kids Ages 4-8",
+  "subtitle": "Word Search, Dot to Dot and Mazes: 40 Holiday Puzzles with Answers",
+  "author": "Crayon Cove Press",
+  "description_html": "<p><b>40 Christmas puzzles for ages 4-8.</b></p><ul><li>12 Christmas word searches (across and down only, great for new readers)</li><li>12 dot-to-dot pictures</li><li>16 mazes from easy to medium</li><li>All answers at the back</li></ul><p>A perfect stocking stuffer.</p>",
+  "keywords": [
+    "christmas activity book for kids 4-8",
+    "christmas word search for kids",
+    "christmas dot to dot kids",
+    "christmas mazes for kids",
+    "stocking stuffers for kids 6-8",
+    "holiday puzzle book kids with answers",
+    "christmas gifts for kids travel activities"
+  ],
+  "categories": [
+    "Children's Books > Activities, Crafts & Games > Activity Books",
+    "Children's Books > Holidays & Celebrations > Christmas"
+  ],
+  "reading_age": "4-8",
+  "trim": "8.5x11",
+  "bleed": false,
+  "paper": "white",
+  "interior": "black & white",
+  "cover_finish": "matte",
+  "low_content_book": false,
+  "page_count": 56,
+  "cover_size_in": [
+    17.3761,
+    11.25
+  ],
+  "price_usd": 9.99,
+  "est_print_cost_usd": 2.84,
+  "est_royalty_usd": 3.15,
+  "ai_disclosure": {
+    "images": "Cover art AI-generated (vector art written by an AI model); puzzles algorithmic",
+    "text": "AI-generated"
+  },
+  "niche_test": {
+    "niche": "Christmas activity ages 4-8",
+    "hypothesis": "Seasonal + activity format; tests the bundle angle"
+  }
+}

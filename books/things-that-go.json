@@ -1,0 +1,95 @@
+{
+  "title": "Things That Go! Bold & Easy Coloring Book for Toddlers",
+  "title_lines": [
+    "Things",
+    "That Go!"
+  ],
+  "subtitle": "Trucks, Diggers, Garbage Trucks, Tractors & More: 21 Big Simple Pictures for Ages 1-4",
+  "badge": "AGES\n1-4",
+  "cover_tagline": "Bold & Easy · Thick lines for little hands",
+  "cover_accent": "#4d96ff",
+  "cover_bg": "#fff8e1",
+  "back_heading": "Vroom! Let's colour!",
+  "back_text": [
+    "Big, bold pictures of the vehicles little ones love: dump truck, digger, tractor, fire truck, bus, train, rocket and more.",
+    "Thick outlines and huge spaces are ideal for chunky crayons and first-time colourers. Every picture has a blank back so markers won't bleed through."
+  ],
+  "seed": 7,
+  "sections": [
+    {
+      "type": "bold",
+      "themes": [
+        "vehicles"
+      ],
+      "single_sided": true,
+      "stroke": 8
+    }
+  ],
+  "price_usd": 9.99,
+  "reading_age": "1-4",
+  "keywords": [
+    "truck coloring book for toddlers",
+    "bold and easy coloring book toddlers 1-3",
+    "digger tractor coloring book boys",
+    "my first coloring book vehicles",
+    "simple big coloring pages ages 2-4",
+    "things that go coloring book",
+    "construction vehicles coloring book kids"
+  ],
+  "categories": [
+    "Children's Books > Activities, Crafts & Games > Coloring Books",
+    "Children's Books > Cars, Trains & Things That Go > Trucks"
+  ],
+  "description_html": "<p><b>Vroom! 21 bold and easy vehicle pictures for toddlers.</b></p><ul><li>Dump truck, digger, garbage truck, cement mixer, crane, tractor, fire truck, bus, train, rocket, helicopter and more</li><li>Thick lines and big spaces for chunky crayons</li><li>Single-sided pages: no bleed-through</li><li>Each picture labelled with a big hollow word to colour</li></ul>",
+  "ai_disclosure": {
+    "images": "AI-generated (vector art written by an AI model)",
+    "text": "AI-generated"
+  },
+  "niche_test": {
+    "niche": "Trucks & vehicles, ages 1-4",
+    "hypothesis": "Evergreen toddler niche; tests whether simple vector art converts"
+  },
+  "cover_subtitle": "21 Big Trucks, Diggers & Vehicles for Little Hands",
+  "cover_items": [
+    [
+      "DUMP TRUCK",
+      {
+        "a": "#ffd93d",
+        "b": "#ffa45b",
+        "c": "#7bdff2",
+        "d": "#555",
+        "e": "#bbb"
+      }
+    ],
+    [
+      "DIGGER",
+      {
+        "a": "#ffd93d",
+        "b": "#ffd93d",
+        "c": "#7bdff2",
+        "d": "#888",
+        "e": "#555"
+      }
+    ],
+    [
+      "GARBAGE TRUCK",
+      {
+        "a": "#55c271",
+        "b": "#55c271",
+        "c": "#7bdff2",
+        "d": "#555",
+        "e": "#bbb"
+      }
+    ],
+    [
+      "FIRE TRUCK",
+      {
+        "a": "#e63946",
+        "b": "#ffd93d",
+        "c": "#7bdff2",
+        "d": "#555",
+        "e": "#bbb"
+      }
+    ]
+  ]
+}
