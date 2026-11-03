@@ -17,7 +17,13 @@ STATUS=$?
 
 git add -A books art output reports
 git commit -q -m "Weekly build $TODAY (exit $STATUS)" || true
-git push -q origin "$BRANCH" || echo "push failed" >&2
+if [ -n "${GH_TOKEN:-}" ]; then
+    # Token in the URL for this one push only; never written to .git/config.
+    git push -q "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO:-PominausGH/amazon_kdp}.git" "HEAD:$BRANCH" \
+        || echo "push failed" >&2
+else
+    echo "GH_TOKEN not set: results kept on this server only" >&2
+fi
 
 # Email notification via a GitHub issue (needs GH_TOKEN with issues:write on the repo).
 if [ -n "${GH_TOKEN:-}" ] && [ -f "reports/$TODAY.md" ]; then
