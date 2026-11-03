@@ -1,8 +1,8 @@
 {
   "title": "Things That Go! Bold & Easy Coloring Book for Toddlers",
-  "subtitle": "Trucks, Diggers, Garbage Trucks, Tractors & More: 21 Big Simple Pictures for Ages 1-4",
+  "subtitle": "Trucks, Diggers, Garbage Trucks, Tractors & More: 50 Big Simple Pictures for Ages 1-4",
   "author": "Crayon Cove Press",
-  "description_html": "<p><b>Vroom! 21 bold and easy vehicle pictures for toddlers.</b></p><ul><li>Dump truck, digger, garbage truck, cement mixer, crane, tractor, fire truck, bus, train, rocket, helicopter and more</li><li>Thick lines and big spaces for chunky crayons</li><li>Single-sided pages: no bleed-through</li><li>Each picture labelled with a big hollow word to colour</li></ul>",
+  "description_html": "<p><b>Vroom! 50 bold and easy vehicle pictures for toddlers.</b></p><ul><li>Dump truck, digger, garbage truck, bulldozer, cement mixer, crane, monster truck, fire truck, tractor, train, rocket, boats and more</li><li>Thick lines and big spaces for chunky crayons</li><li>50 single-sided pages: no bleed-through</li><li>Each picture labelled with a big hollow word to colour</li><li>Large 8.5 x 11 inch pages</li></ul>",
   "keywords": [
     "truck coloring book for toddlers",
     "bold and easy coloring book toddlers 1-3",
@@ -23,16 +23,16 @@
   "interior": "black & white",
   "cover_finish": "matte",
   "low_content_book": false,
-  "page_count": 46,
+  "page_count": 104,
   "cover_size_in": [
-    17.3536,
+    17.4842,
     11.25
   ],
   "price_usd": 9.99,
   "est_print_cost_usd": 2.84,
   "est_royalty_usd": 3.15,
   "ai_disclosure": {
-    "images": "AI-generated (vector art written by an AI model)",
+    "images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
     "text": "AI-generated"
   },
   "niche_test": {

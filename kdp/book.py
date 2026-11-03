@@ -103,6 +103,27 @@ class Builder:
             full.update(pal)
             self.cover_art.append(bold.draw(name, 8, full))
 
+    def section_ai_pages(self, s):
+        """AI line art from art/<slug>/pages/ (made by `python -m kdp.aipages`)."""
+        from .aipages import page_path
+        missing = []
+        for i, pg in enumerate(s["pages"], 1):
+            f = page_path(self.slug, i, pg["subject"])
+            if not f.exists():
+                missing.append(f.name)
+                continue
+            p = self.new()
+            x, y, w, h = p.safe
+            png = subprocess.run(["magick", str(f), "-type", "bilevel", "png:-"], capture_output=True, check=True).stdout
+            p.add(f'<image x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h - 80:.1f}" '
+                  f'preserveAspectRatio="xMidYMid meet" href="data:image/png;base64,{base64.b64encode(png).decode()}"/>')
+            label = pg["label"]
+            outlined_label(p, p.w / 2, y + h - 18, label, 54 if len(label) < 11 else 42 if len(label) < 15 else 34)
+            if s.get("single_sided", True):
+                self.blank_back()
+        if missing:
+            raise SystemExit(f"{len(missing)} AI pages missing (run python -m kdp.aipages): {missing[:5]}...")
+
     def section_mandala(self, s):
         for i in range(s["count"]):
             p = self.new()
@@ -372,6 +393,7 @@ def build(recipe: Path) -> Path:
         shutil.rmtree(out)
     out.mkdir(parents=True)
     b = Builder(cfg)
+    b.slug = slug
     b.build_interior()
     render_pdf(b.pages, out / "svg_interior", out / "interior.pdf")
     cover = b.build_cover()

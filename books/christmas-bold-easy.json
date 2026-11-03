@@ -5,26 +5,224 @@
     "Bold & Easy",
     "Coloring Book"
   ],
-  "subtitle": "21 Big, Simple Holiday Pictures for Toddlers & Kids Ages 2-5",
+  "subtitle": "50 Big, Simple Holiday Pictures for Toddlers & Kids Ages 2-5",
   "badge": "AGES\n2-5",
   "cover_tagline": "Thick lines · Big shapes · One picture per page",
   "cover_accent": "#e63946",
   "cover_bg": "#f1faee",
   "back_heading": "Merry Christmas, little artist!",
   "back_text": [
-    "21 bold, simple Christmas pictures made for small hands: snowmen, reindeer, gingerbread, stockings, presents and more.",
+    "50 bold, simple Christmas pictures made for small hands: Santa, snowmen, reindeer, gingerbread, puppies, presents and more.",
     "Thick outlines and big spaces make colouring easy for toddlers and preschoolers. Every picture is printed on its own page with a blank back, so markers won't bleed through.",
     "A perfect stocking stuffer for ages 2 to 5."
   ],
   "seed": 2026,
   "sections": [
     {
-      "type": "bold",
-      "themes": [
-        "christmas"
-      ],
+      "type": "ai_pages",
       "single_sided": true,
-      "stroke": 8
+      "pages": [
+        {
+          "label": "SANTA",
+          "subject": "jolly Santa Claus waving, big round belly, big beard"
+        },
+        {
+          "label": "CHRISTMAS TREE",
+          "subject": "a Christmas tree with a star on top and round baubles, presents underneath"
+        },
+        {
+          "label": "SNOWMAN",
+          "subject": "a happy snowman with a top hat, scarf and carrot nose"
+        },
+        {
+          "label": "REINDEER",
+          "subject": "a cute baby reindeer with antlers and a big round nose"
+        },
+        {
+          "label": "GINGERBREAD MAN",
+          "subject": "a smiling gingerbread man with icing buttons"
+        },
+        {
+          "label": "PRESENTS",
+          "subject": "a stack of three wrapped presents with big bows"
+        },
+        {
+          "label": "STOCKING",
+          "subject": "a Christmas stocking hanging from a hook, with a candy cane peeking out"
+        },
+        {
+          "label": "CANDY CANES",
+          "subject": "two crossed striped candy canes with a bow"
+        },
+        {
+          "label": "ELF",
+          "subject": "a cheerful little Christmas elf with pointy hat and curly shoes"
+        },
+        {
+          "label": "SANTA'S SLEIGH",
+          "subject": "Santa's sleigh, big and simple, side view, with three wrapped presents in it, no reindeer"
+        },
+        {
+          "label": "BELLS",
+          "subject": "two jingle bells tied with a ribbon bow"
+        },
+        {
+          "label": "BAUBLE",
+          "subject": "one big round Christmas bauble ornament with simple stripes"
+        },
+        {
+          "label": "SNOWFLAKE",
+          "subject": "one big simple six-armed snowflake"
+        },
+        {
+          "label": "PENGUIN",
+          "subject": "a cute penguin wearing a woolly hat and scarf"
+        },
+        {
+          "label": "POLAR BEAR",
+          "subject": "a cuddly polar bear cub sitting in the snow"
+        },
+        {
+          "label": "HOT COCOA",
+          "subject": "a mug of hot cocoa with marshmallows and steam"
+        },
+        {
+          "label": "MITTENS",
+          "subject": "a pair of mittens joined with a string"
+        },
+        {
+          "label": "WREATH",
+          "subject": "a Christmas wreath with a big bow and berries"
+        },
+        {
+          "label": "SANTA HAT",
+          "subject": "a floppy Santa hat with a fluffy pompom"
+        },
+        {
+          "label": "NUTCRACKER",
+          "subject": "a toy nutcracker soldier standing tall, simple shapes"
+        },
+        {
+          "label": "TEDDY BEAR",
+          "subject": "a teddy bear with a bow around its neck"
+        },
+        {
+          "label": "TOY TRAIN",
+          "subject": "a little toy train engine with one carriage"
+        },
+        {
+          "label": "ROCKING HORSE",
+          "subject": "a wooden rocking horse"
+        },
+        {
+          "label": "DRUM",
+          "subject": "a toy drum seen from the side at a slight angle, with two drumsticks crossed on top, simple"
+        },
+        {
+          "label": "GINGERBREAD HOUSE",
+          "subject": "a very simple gingerbread house with a door, one window and a few big candy dots, minimal detail"
+        },
+        {
+          "label": "COOKIES & MILK",
+          "subject": "one big round Christmas cookie shaped like a star next to a glass of milk, very simple"
+        },
+        {
+          "label": "SLED",
+          "subject": "a wooden sled in the snow"
+        },
+        {
+          "label": "ICE SKATES",
+          "subject": "a pair of ice skates with laces"
+        },
+        {
+          "label": "SNOW GLOBE",
+          "subject": "a snow globe with a little house inside"
+        },
+        {
+          "label": "CANDLE",
+          "subject": "a Christmas candle with holly leaves at the base"
+        },
+        {
+          "label": "ANGEL",
+          "subject": "a cute little Christmas angel girl with wings and a halo, simple, no border"
+        },
+        {
+          "label": "STAR",
+          "subject": "a big smiling Christmas star"
+        },
+        {
+          "label": "HOLLY",
+          "subject": "holly leaves with three round berries"
+        },
+        {
+          "label": "FIREPLACE",
+          "subject": "a cosy fireplace with two stockings hanging on it"
+        },
+        {
+          "label": "SANTA'S SACK",
+          "subject": "Santa's sack with a teddy bear and a ball peeking out of the top, simple big shapes"
+        },
+        {
+          "label": "SNOWY HOUSE",
+          "subject": "a small house with snow on the roof and a wreath on the door"
+        },
+        {
+          "label": "PUPPY",
+          "subject": "a cute puppy wearing a Santa hat"
+        },
+        {
+          "label": "KITTEN",
+          "subject": "a cute kitten peeking out of a Christmas stocking"
+        },
+        {
+          "label": "OWL",
+          "subject": "a snowy owl on a branch"
+        },
+        {
+          "label": "FOX",
+          "subject": "a little fox wearing a scarf in the snow"
+        },
+        {
+          "label": "BUNNY",
+          "subject": "a bunny in the snow with a tiny present"
+        },
+        {
+          "label": "ROBIN",
+          "subject": "a round robin bird on a snowy branch"
+        },
+        {
+          "label": "SQUIRREL",
+          "subject": "a squirrel holding an acorn, wearing a tiny scarf"
+        },
+        {
+          "label": "SNOWMAN FAMILY",
+          "subject": "two snowmen, a big one and a little one, holding hands"
+        },
+        {
+          "label": "REINDEER FLYING",
+          "subject": "a big cute reindeer leaping in the air, large, filling the frame, a couple of small clouds"
+        },
+        {
+          "label": "CHRISTMAS LIGHTS",
+          "subject": "a string of big Christmas light bulbs in a wavy line"
+        },
+        {
+          "label": "LANTERN",
+          "subject": "a Christmas lantern with a candle inside"
+        },
+        {
+          "label": "CHRISTMAS PUDDING",
+          "subject": "a Christmas pudding with a holly sprig on top"
+        },
+        {
+          "label": "ORNAMENTS",
+          "subject": "three different Christmas tree ornaments: a ball, a star and a heart"
+        },
+        {
+          "label": "CHRISTMAS MORNING",
+          "subject": "a child happily opening a big present"
+        }
+      ]
     }
   ],
   "price_usd": 9.99,
@@ -42,9 +240,9 @@
     "Children's Books > Activities, Crafts & Games > Coloring Books",
     "Children's Books > Holidays & Celebrations > Christmas"
   ],
-  "description_html": "<p><b>Big, simple Christmas pictures for little hands.</b></p><p>21 bold and easy holiday designs with thick outlines and large spaces: perfect first colouring for toddlers and preschoolers.</p><ul><li>21 single-sided pages (blank backs, no bleed-through)</li><li>Snowman, reindeer, gingerbread, stocking, presents, Christmas tree and more</li><li>Each picture is labelled with a big hollow word to colour too</li><li>Large 8.5 x 11 inch pages</li></ul><p>A great stocking stuffer for ages 2-5.</p>",
+  "description_html": "<p><b>Big, simple Christmas pictures for little hands.</b></p><p>50 bold and easy holiday designs with thick outlines and large spaces: perfect first colouring for toddlers and preschoolers.</p><ul><li>50 single-sided pages (blank backs, no bleed-through)</li><li>Santa, snowman, reindeer, elves, gingerbread house, puppies, presents and more</li><li>Each picture is labelled with a big hollow word to colour too</li><li>Large 8.5 x 11 inch pages</li></ul><p>A great stocking stuffer for ages 2-5.</p>",
   "ai_disclosure": {
-    "images": "AI-generated (vector art written by an AI model)",
+    "images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
     "text": "AI-generated",
     "note": "Disclose as AI-generated in KDP's content questions. Check this matches your view before publishing."
   },
@@ -53,7 +251,7 @@
     "hypothesis": "Q4 seasonal demand beats competition for simple toddler books",
     "deadline": "Submit by 2026-11-05 to be live for peak season"
   },
-  "cover_subtitle": "21 Big, Simple Holiday Pictures for Little Hands",
+  "cover_subtitle": "50 Big, Simple Holiday Pictures for Little Hands",
   "cover_items": [
     [
       "CHRISTMAS TREE",
@@ -90,5 +288,6 @@
     ]
   ],
   "cover_prompt": "A cosy, joyful Christmas scene for toddlers: a smiling snowman with a red scarf, a decorated Christmas tree with a gold star, a cute reindeer with a red nose, a smiling gingerbread man, wrapped presents and candy canes, soft falling snow, rounded snowy hills.",
-  "cover_art": "art/christmas-bold-easy/option-1.png"
+  "cover_art": "art/christmas-bold-easy/option-1.png",
+  "page_background": "a simple ground line or a few simple snowflakes/stars"
 }

@@ -67,13 +67,13 @@ def openrouter_key() -> str | None:
     return None
 
 
-def generate_openrouter(key: str, prompt: str, aspect: str) -> tuple[bytes, str]:
+def generate_openrouter(key: str, prompt: str, aspect: str, size: str | None = None) -> tuple[bytes, str]:
     last = None
     for model in OR_MODELS:
         body = {"model": model, "modalities": ["image", "text"],
                 "messages": [{"role": "user", "content": prompt}],
                 # 4K ~= 3072x4096: ~300 DPI on an 8.5x11 front cover. Default is only ~1K.
-                "image_config": {"aspect_ratio": aspect, "image_size": OR_SIZE}}
+                "image_config": {"aspect_ratio": aspect, "image_size": size or OR_SIZE}}
         req = urllib.request.Request(OR_API, data=json.dumps(body).encode(), headers={
             "Content-Type": "application/json", "Authorization": f"Bearer {key}",
             "X-Title": "amazon_kdp cover art"})
@@ -94,17 +94,17 @@ def generate_openrouter(key: str, prompt: str, aspect: str) -> tuple[bytes, str]
     raise GeminiError(last or "no OpenRouter model available")
 
 
-def generate(prompt: str, aspect="3:4", size="2K") -> tuple[bytes, str]:
+def generate(prompt: str, aspect="3:4", size=None) -> tuple[bytes, str]:
     """OpenRouter if its key is set, otherwise Gemini direct."""
     ork = openrouter_key()
     if ork:
-        return generate_openrouter(ork, prompt, aspect)
+        return generate_openrouter(ork, prompt, aspect, size)
     key = api_key()
     last = None
     for model in MODELS:
         image_cfg = {"aspectRatio": aspect}
         if "3.1" in model:
-            image_cfg["imageSize"] = size
+            image_cfg["imageSize"] = size or "2K"
         body = {"contents": [{"parts": [{"text": prompt}]}],
                 "generationConfig": {"responseModalities": ["IMAGE"], "imageConfig": image_cfg}}
         req = urllib.request.Request(API.format(model=model), data=json.dumps(body).encode(),

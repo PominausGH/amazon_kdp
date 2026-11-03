@@ -4,25 +4,223 @@
     "Things",
     "That Go!"
   ],
-  "subtitle": "Trucks, Diggers, Garbage Trucks, Tractors & More: 21 Big Simple Pictures for Ages 1-4",
+  "subtitle": "Trucks, Diggers, Garbage Trucks, Tractors & More: 50 Big Simple Pictures for Ages 1-4",
   "badge": "AGES\n1-4",
   "cover_tagline": "Bold & Easy · Thick lines for little hands",
   "cover_accent": "#4d96ff",
   "cover_bg": "#fff8e1",
   "back_heading": "Vroom! Let's colour!",
   "back_text": [
-    "Big, bold pictures of the vehicles little ones love: dump truck, digger, tractor, fire truck, bus, train, rocket and more.",
+    "50 big, bold pictures of the vehicles little ones love: dump truck, digger, garbage truck, monster truck, fire truck, train, rocket and more.",
     "Thick outlines and huge spaces are ideal for chunky crayons and first-time colourers. Every picture has a blank back so markers won't bleed through."
   ],
   "seed": 7,
   "sections": [
     {
-      "type": "bold",
-      "themes": [
-        "vehicles"
-      ],
+      "type": "ai_pages",
       "single_sided": true,
-      "stroke": 8
+      "pages": [
+        {
+          "label": "DUMP TRUCK",
+          "subject": "a big dump truck with its bed full of rocks"
+        },
+        {
+          "label": "DIGGER",
+          "subject": "an excavator digger with its bucket scooping dirt"
+        },
+        {
+          "label": "GARBAGE TRUCK",
+          "subject": "a garbage truck with a bin being lifted"
+        },
+        {
+          "label": "FIRE TRUCK",
+          "subject": "a fire truck with a ladder on top and a hose"
+        },
+        {
+          "label": "CEMENT MIXER",
+          "subject": "a cement mixer truck with a round drum"
+        },
+        {
+          "label": "TRACTOR",
+          "subject": "a farm tractor with one big back wheel and one small front wheel"
+        },
+        {
+          "label": "CRANE",
+          "subject": "a construction crane truck lifting a block"
+        },
+        {
+          "label": "BULLDOZER",
+          "subject": "a bulldozer pushing a pile of dirt"
+        },
+        {
+          "label": "FRONT LOADER",
+          "subject": "a wheel loader with a big front bucket"
+        },
+        {
+          "label": "ROAD ROLLER",
+          "subject": "a steamroller road roller flattening a road"
+        },
+        {
+          "label": "FORKLIFT",
+          "subject": "a forklift carrying a box on a pallet"
+        },
+        {
+          "label": "TOW TRUCK",
+          "subject": "a tow truck with a hook"
+        },
+        {
+          "label": "MONSTER TRUCK",
+          "subject": "a monster truck with giant wheels"
+        },
+        {
+          "label": "DELIVERY TRUCK",
+          "subject": "a box delivery truck with parcels"
+        },
+        {
+          "label": "ICE CREAM TRUCK",
+          "subject": "an ice cream van with a big ice cream cone shape on the roof, plain sides with no writing or words at all"
+        },
+        {
+          "label": "TANKER TRUCK",
+          "subject": "a tanker truck with a round tank"
+        },
+        {
+          "label": "CAR CARRIER",
+          "subject": "a car carrier truck carrying two little cars"
+        },
+        {
+          "label": "PICKUP TRUCK",
+          "subject": "a pickup truck with boxes in the back"
+        },
+        {
+          "label": "LOG TRUCK",
+          "subject": "a logging truck carrying logs"
+        },
+        {
+          "label": "SNOW PLOW",
+          "subject": "a snow plow truck pushing snow"
+        },
+        {
+          "label": "POLICE CAR",
+          "subject": "a police car with lights on the roof"
+        },
+        {
+          "label": "AMBULANCE",
+          "subject": "an ambulance with a cross on the side"
+        },
+        {
+          "label": "RACE CAR",
+          "subject": "a race car with a number circle on the side (no digits)"
+        },
+        {
+          "label": "CAR",
+          "subject": "a cute small family car"
+        },
+        {
+          "label": "SCHOOL BUS",
+          "subject": "a school bus with many windows"
+        },
+        {
+          "label": "DOUBLE DECKER BUS",
+          "subject": "a double decker bus"
+        },
+        {
+          "label": "TAXI",
+          "subject": "a taxi car with a plain roof light, one friendly face on the front, plain sides with no writing"
+        },
+        {
+          "label": "CAMPER VAN",
+          "subject": "a camper van with a surfboard on the roof"
+        },
+        {
+          "label": "MOTORBIKE",
+          "subject": "a motorbike"
+        },
+        {
+          "label": "SCOOTER",
+          "subject": "a kick scooter"
+        },
+        {
+          "label": "BICYCLE",
+          "subject": "a bicycle with a basket"
+        },
+        {
+          "label": "TRAIN",
+          "subject": "a steam train engine with smoke puffs"
+        },
+        {
+          "label": "FREIGHT TRAIN",
+          "subject": "a train engine pulling two freight cars"
+        },
+        {
+          "label": "TRAM",
+          "subject": "a city tram on rails"
+        },
+        {
+          "label": "AIRPLANE",
+          "subject": "a passenger airplane flying with clouds"
+        },
+        {
+          "label": "HELICOPTER",
+          "subject": "a helicopter flying"
+        },
+        {
+          "label": "HOT AIR BALLOON",
+          "subject": "a hot air balloon with a basket"
+        },
+        {
+          "label": "ROCKET",
+          "subject": "a rocket blasting off with stars"
+        },
+        {
+          "label": "SPACE ROVER",
+          "subject": "a moon rover vehicle with six round wheels and a little satellite dish, on the moon with craters, no letters or symbols"
+        },
+        {
+          "label": "SAILBOAT",
+          "subject": "a sailboat on waves"
+        },
+        {
+          "label": "TUGBOAT",
+          "subject": "a little tugboat on the water"
+        },
+        {
+          "label": "SUBMARINE",
+          "subject": "a submarine underwater with bubbles and a fish"
+        },
+        {
+          "label": "SPEEDBOAT",
+          "subject": "a speedboat splashing through water"
+        },
+        {
+          "label": "CARGO SHIP",
+          "subject": "a cargo ship carrying containers"
+        },
+        {
+          "label": "FARM TRUCK",
+          "subject": "a farm truck carrying hay bales"
+        },
+        {
+          "label": "COMBINE HARVESTER",
+          "subject": "a combine harvester in a field"
+        },
+        {
+          "label": "STREET SWEEPER",
+          "subject": "a street sweeper truck with round brushes"
+        },
+        {
+          "label": "MAIL TRUCK",
+          "subject": "a mail van with an envelope picture on the side"
+        },
+        {
+          "label": "DIGGER & DUMP TRUCK",
+          "subject": "a small digger loading dirt into a dump truck"
+        },
+        {
+          "label": "CONSTRUCTION SITE",
+          "subject": "a simple construction site with a crane, a digger and traffic cones"
+        }
+      ]
     }
   ],
   "price_usd": 9.99,
@@ -40,16 +238,16 @@
     "Children's Books > Activities, Crafts & Games > Coloring Books",
     "Children's Books > Cars, Trains & Things That Go > Trucks"
   ],
-  "description_html": "<p><b>Vroom! 21 bold and easy vehicle pictures for toddlers.</b></p><ul><li>Dump truck, digger, garbage truck, cement mixer, crane, tractor, fire truck, bus, train, rocket, helicopter and more</li><li>Thick lines and big spaces for chunky crayons</li><li>Single-sided pages: no bleed-through</li><li>Each picture labelled with a big hollow word to colour</li></ul>",
+  "description_html": "<p><b>Vroom! 50 bold and easy vehicle pictures for toddlers.</b></p><ul><li>Dump truck, digger, garbage truck, bulldozer, cement mixer, crane, monster truck, fire truck, tractor, train, rocket, boats and more</li><li>Thick lines and big spaces for chunky crayons</li><li>50 single-sided pages: no bleed-through</li><li>Each picture labelled with a big hollow word to colour</li><li>Large 8.5 x 11 inch pages</li></ul>",
   "ai_disclosure": {
-    "images": "AI-generated (vector art written by an AI model)",
+    "images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
     "text": "AI-generated"
   },
   "niche_test": {
     "niche": "Trucks & vehicles, ages 1-4",
     "hypothesis": "Evergreen toddler niche; tests whether simple vector art converts"
   },
-  "cover_subtitle": "21 Big Trucks, Diggers & Vehicles for Little Hands",
+  "cover_subtitle": "50 Big Trucks, Diggers & Vehicles for Little Hands",
   "cover_items": [
     [
       "DUMP TRUCK",
@@ -93,5 +291,6 @@
     ]
   ],
   "cover_prompt": "A happy, busy scene of cute rounded toddler-style vehicles: a yellow dump truck, a yellow digger, a green garbage truck, a red fire truck and a blue bus on a simple curvy road, green rolling hills, a few fluffy clouds.",
-  "cover_art": "art/things-that-go/option-2.png"
+  "cover_art": "art/things-that-go/option-2.png",
+  "page_background": "a simple road or ground line and one or two small clouds"
 }
