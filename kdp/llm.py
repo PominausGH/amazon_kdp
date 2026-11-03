@@ -62,10 +62,15 @@ def chat_json(messages: list, model: str, **kw):
 
 
 def credit_remaining() -> float | None:
-    """USD left on the key's limit (None = no limit set)."""
-    req = urllib.request.Request("https://openrouter.ai/api/v1/key", headers={"Authorization": f"Bearer {_key()}"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)["data"].get("limit_remaining")
+    """USD actually spendable: the lower of the key's own limit and the shared
+    account balance (other projects draw on the same account). None = unlimited."""
+    h = {"Authorization": f"Bearer {_key()}"}
+    with urllib.request.urlopen(urllib.request.Request("https://openrouter.ai/api/v1/key", headers=h), timeout=30) as r:
+        key_left = json.load(r)["data"].get("limit_remaining")
+    with urllib.request.urlopen(urllib.request.Request("https://openrouter.ai/api/v1/credits", headers=h), timeout=30) as r:
+        c = json.load(r)["data"]
+    account_left = (c.get("total_credits") or 0) - (c.get("total_usage") or 0)
+    return account_left if key_left is None else min(key_left, account_left)
 
 
 __all__ = ["chat", "chat_json", "image_part", "credit_remaining", "LLMError", "GeminiError", "PLANNER", "REVIEWER"]
