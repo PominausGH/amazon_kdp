@@ -24,7 +24,9 @@ MODELS = ["gemini-3.1-flash-image-preview", "gemini-2.5-flash-image"]
 API = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 
 STYLE = (
-    "Children's colouring book COVER illustration. Style: bold thick clean black outlines, flat bright "
+    "A flat, full-frame, edge-to-edge digital illustration (the artwork itself, NOT a photo or mockup of a "
+    "book, no table, no paper edges, no frame, no border) for the front of a children's colouring book. "
+    "Style: bold thick clean black outlines, flat bright "
     "cheerful colours, simple rounded cute shapes, no gradients, no shading, no texture, like a modern "
     "kids' sticker or toddler board book. Match the style of simple bold-and-easy colouring pages. "
     "Absolutely NO text, letters, numbers, words, logos or watermarks anywhere in the image. "
@@ -51,6 +53,7 @@ def api_key() -> str:
 
 OR_KEY_FILE = Path.home() / ".config/kdp/openrouter.env"
 OR_API = "https://openrouter.ai/api/v1/chat/completions"
+OR_SIZE = os.environ.get("KDP_IMAGE_SIZE", "4K")
 OR_MODELS = ["google/gemini-3.1-flash-image", "google/gemini-3.1-flash-image-preview", "google/gemini-2.5-flash-image"]
 
 
@@ -69,7 +72,8 @@ def generate_openrouter(key: str, prompt: str, aspect: str) -> tuple[bytes, str]
     for model in OR_MODELS:
         body = {"model": model, "modalities": ["image", "text"],
                 "messages": [{"role": "user", "content": prompt}],
-                "image_config": {"aspect_ratio": aspect}}
+                # 4K ~= 3072x4096: ~300 DPI on an 8.5x11 front cover. Default is only ~1K.
+                "image_config": {"aspect_ratio": aspect, "image_size": OR_SIZE}}
         req = urllib.request.Request(OR_API, data=json.dumps(body).encode(), headers={
             "Content-Type": "application/json", "Authorization": f"Bearer {key}",
             "X-Title": "amazon_kdp cover art"})
