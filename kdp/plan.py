@@ -26,8 +26,8 @@ Rules:
 - All pages must be different subjects or clearly different scenes. No near-duplicates.
 - Keywords: exactly 7, each <= 50 characters, buyer search phrases, no brand names, no repeats of title words only.
 - Title + subtitle together <= 190 characters. Subtitle states page count and age range.
-- description_html: short, scannable: bold opening line, 4-5 <li> bullets (page count, single-sided/no bleed-through,
-  thick lines, examples of subjects, 8.5 x 11), a gift line. Only <p>, <b>, <ul>, <li>.
+- description_html: short, scannable: bold opening line, 4-5 <li> bullets (picture count, the page format exactly as
+  described in Format, thick lines, examples of subjects, 8.5 x 11), a gift line. Only <p>, <b>, <ul>, <li>.
 - cover_prompt: a bright cheerful SCENE featuring 4-6 of the book's best subjects together, for a full-colour cover.
 - Australian English is fine in back text; US spelling ("coloring") in title, subtitle and keywords (bigger market).
 Reply with ONE JSON object only."""
@@ -72,15 +72,25 @@ def validate(r: dict, n: int) -> list[str]:
     return errs
 
 
+FORMATS = {  # A/B test (Nov 2026): competitor anchor is 100 pictures back-to-back for $5.99
+    "50-single": {"pages": 50, "single_sided": True,
+                  "note": "50 pictures, each on its own page with a blank back (no marker bleed-through)."},
+    "100-duplex": {"pages": 100, "single_sided": False,
+                   "note": "100 pictures printed back-to-back: sell it as great value (100 pictures!). "
+                           "Do NOT claim single-sided or no bleed-through; say crayons and colored pencils work best."},
+}
+
+
 def plan(brief: dict) -> dict:
-    n = brief.get("pages", 50)
+    fmt = FORMATS[brief.get("format", "50-single")]
+    n = fmt["pages"]
     example = json.loads(EXAMPLE.read_text())
     example_view = {k: example[k] for k in ("title", "subtitle", "keywords", "description_html", "cover_prompt")}
     example_view["pages"] = example["sections"][0]["pages"][:5]
     msgs = [
         {"role": "system", "content": SYSTEM},
         {"role": "user", "content": (
-            f"Brief: {json.dumps(brief)}\nNumber of pages: {n}\n\n"
+            f"Brief: {json.dumps(brief)}\nNumber of pages: {n}\nFormat: {fmt['note']}\n\n"
             f"Return JSON with exactly these fields:\n{FIELDS}\n\n"
             f"Example of the style (a different book, partial):\n{json.dumps(example_view, indent=1)}")},
     ]
@@ -96,7 +106,8 @@ def plan(brief: dict) -> dict:
     pages = r.pop("pages")
     recipe = {**r,
               "seed": abs(hash(brief["slug"])) % 100000,
-              "sections": [{"type": "ai_pages", "single_sided": True, "pages": pages}],
+              "sections": [{"type": "ai_pages", "single_sided": fmt["single_sided"], "pages": pages}],
+              "format": brief.get("format", "50-single"),
               "price_usd": 9.99,
               "ai_disclosure": {"images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
                                 "text": "AI-generated (Claude)"},

@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 QUEUE = ROOT / "books" / "queue.json"
 REPORTS = ROOT / "reports"
 PER_WEEK = 2
-COST_PER_BOOK = 7.0  # USD: ~50 pages x $0.10 + redraws + 3 4K covers + LLM calls
+COST_PER_BOOK = {"50-single": 7.0, "100-duplex": 13.0}  # USD: pages x ~$0.10 + redraws + 3 4K covers + LLM
 MAX_REDRAW_ROUNDS = 2
 
 
@@ -125,7 +125,7 @@ def main():
     today = dt.date.fromisoformat(a.today) if a.today else dt.date.today()
     q = json.loads(QUEUE.read_text())
     books = due_books(q, today, PER_WEEK)
-    need = sum(0 if b.get("prebuilt") else COST_PER_BOOK for b in books)
+    need = sum(0 if b.get("prebuilt") else COST_PER_BOOK[b.get("format", "50-single")] for b in books)
     left = credit_remaining()
     log = [f"# KDP weekly build {today}", "",
            f"Books due: {', '.join(b['slug'] for b in books) or 'none'}",
