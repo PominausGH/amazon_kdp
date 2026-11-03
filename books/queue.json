@@ -1,0 +1,31 @@
+{
+  "_help": "Weekly runner takes the first 2 'todo' books whose not_before date has passed. Prebuilt books skip planning and generation. Add new briefs anywhere; order = priority.",
+  "books": [
+    {"slug": "christmas-bold-easy", "status": "submitted", "theme": "Christmas bold & easy", "ages": "2-5"},
+    {"slug": "things-that-go", "status": "submitted", "theme": "Trucks & vehicles bold & easy", "ages": "1-4"},
+
+    {"slug": "christmas-activity-4-8", "status": "todo", "prebuilt": true, "theme": "Christmas activity: word search, dot to dot, mazes", "ages": "4-8", "not_before": "2026-11-08"},
+    {"slug": "mazes-ages-4-8", "status": "todo", "prebuilt": true, "theme": "Mazes easy to tricky", "ages": "4-8", "not_before": "2026-11-08"},
+
+    {"slug": "dinosaurs-bold-easy", "status": "todo", "theme": "Cute dinosaurs, bold and easy", "ages": "3-6", "pages": 50,
+     "why": "Evergreen boys' favourite, called 'still rising' for 2026"},
+    {"slug": "aussie-animals-bold-easy", "status": "todo", "theme": "Australian animals (koala, kangaroo, wombat, platypus, echidna, kookaburra, quokka, emu...) bold and easy", "ages": "2-5", "pages": 50,
+     "why": "Home market; Aussie Cosy books by Mimimoo sell at 4.8-5 stars with little competition"},
+    {"slug": "farm-animals-first", "status": "todo", "theme": "My First Farm Animals: very simple big shapes for the youngest", "ages": "1-3", "pages": 50,
+     "why": "Often a parent's first colouring book purchase"},
+    {"slug": "ocean-animals-bold-easy", "status": "todo", "theme": "Cute ocean and sea animals, bold and easy", "ages": "3-6", "pages": 50,
+     "why": "Evergreen; Coco Wyo's Ocean Scene has 2.4K reviews"},
+    {"slug": "unicorns-mermaids", "status": "todo", "theme": "Original unicorns, mermaids and fairy-tale friends (no licensed characters)", "ages": "4-8", "pages": 50,
+     "why": "Evergreen girls' gift niche"},
+    {"slug": "space-rockets-planets", "status": "todo", "theme": "Space: rockets, planets, astronauts, aliens, moon rovers", "ages": "4-8", "pages": 50,
+     "why": "Rocket ships flagged as a breakout search"},
+    {"slug": "capybara-cozy", "status": "todo", "theme": "Cozy capybaras and friends: bold & easy cute scenes for kids and adults", "ages": "6-12", "pages": 50,
+     "why": "Trend animal; cozy bold-and-easy adult crossover dominates broad searches"},
+    {"slug": "puppies-kittens", "status": "todo", "theme": "Cute puppies and kittens, bold and easy", "ages": "2-5", "pages": 50,
+     "why": "Evergreen"},
+    {"slug": "valentines-kids", "status": "todo", "theme": "Valentine's Day for kids: hearts, cute animals with hearts, love bugs (no text)", "ages": "3-6", "pages": 50,
+     "not_before": "2027-01-04", "why": "Seasonal: live ~3-4 weeks before Feb 14"},
+    {"slug": "easter-kids", "status": "todo", "theme": "Easter for toddlers: bunnies, eggs, chicks, baskets, spring flowers", "ages": "2-5", "pages": 50,
+     "not_before": "2027-02-15", "why": "Seasonal: Easter 2027 is 28 March"}
+  ]
+}

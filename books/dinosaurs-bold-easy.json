@@ -1,0 +1,257 @@
+{
+  "title": "Dinosaur Bold & Easy Coloring Book for Kids",
+  "title_lines": [
+    "Dinosaur",
+    "Coloring Book"
+  ],
+  "subtitle": "50 Big, Simple Cute Dinosaur Pictures with Thick Lines for Toddlers, Preschoolers & Kids Ages 3-6",
+  "cover_subtitle": "50 Big, Simple Pictures with Thick Lines",
+  "badge": "AGES\n3-6",
+  "cover_tagline": "Roar-some fun for little hands",
+  "cover_accent": "#1E9A55",
+  "cover_bg": "#EAF7E4",
+  "back_heading": "Roar! Time to Colour!",
+  "back_text": [
+    "Meet 50 friendly dinosaurs, from the mighty T-Rex and gentle long necks to tiny hatchlings and silly party dinos. Every picture is big, bold and simple, so little hands can colour with confidence.",
+    "Thick outlines and large open spaces make this book ideal for toddlers, preschoolers and early school-age kids who are just learning to hold crayons, markers or pencils.",
+    "Single-sided pages mean no bleed-through, so kids can colour as wildly as they like. A perfect gift for any dinosaur-loving child."
+  ],
+  "page_background": "a simple ground line, a few small clouds, and the occasional simple fern, rock or round bush; nothing busy",
+  "keywords": [
+    "dinosaur coloring book for toddlers",
+    "dinosaur coloring book ages 3-6",
+    "bold and easy dinosaur coloring pages",
+    "big simple coloring book thick lines",
+    "dinosaur gifts for boys 3 4 5 years old",
+    "preschool dinosaur activity book",
+    "easy coloring book for kids T-Rex"
+  ],
+  "categories": [
+    "Books > Children's Books > Activities, Crafts & Games > Coloring Books",
+    "Books > Children's Books > Animals > Dinosaurs & Prehistoric Life"
+  ],
+  "description_html": "<p><b>Big, bold dinosaurs for little hands to colour!</b></p><p>50 cute and friendly dinosaur designs with thick outlines and large spaces: perfect first colouring for toddlers, preschoolers and early school-age kids.</p><ul><li>50 single-sided pages (blank backs, no bleed-through)</li><li>Thick, bold lines and big open spaces, easy to colour inside</li><li>T-Rex, Triceratops, Stegosaurus, baby dinos, sea reptiles, and silly dinos at a party, on a skateboard or in space</li><li>Each picture is labelled with a big hollow word to colour too</li><li>Large 8.5 x 11 inch pages</li></ul><p>A great gift for any dinosaur-loving child ages 3-6, ideal for birthdays, car trips and quiet time.</p>",
+  "cover_prompt": "A bright, cheerful prehistoric scene for kids: a smiling green T-Rex, a friendly orange Triceratops, a purple Stegosaurus with round plates, a gentle blue long-necked Brachiosaurus, and a baby dinosaur hatching from a spotty egg, with a small volcano, big ferns, fluffy clouds and a sunny sky.",
+  "reading_age": "3-6",
+  "aplus_heading": "Roarsome Dinosaur Fun",
+  "aplus_caption": "50 bold, easy dinosaur pictures for little hands to colour",
+  "seed": 88693,
+  "sections": [
+    {
+      "type": "ai_pages",
+      "single_sided": true,
+      "pages": [
+        {
+          "label": "T-REX",
+          "subject": "a friendly smiling T-Rex standing on two legs with tiny arms, big head and rounded teeth"
+        },
+        {
+          "label": "TRICERATOPS",
+          "subject": "a cute Triceratops with three horns and a big round frill, walking sideways"
+        },
+        {
+          "label": "STEGOSAURUS",
+          "subject": "a happy Stegosaurus with big round plates along its back and a spiky tail"
+        },
+        {
+          "label": "BRACHIOSAURUS",
+          "subject": "a gentle Brachiosaurus with a very long neck reaching up to a leafy tree"
+        },
+        {
+          "label": "VELOCIRAPTOR",
+          "subject": "a cheeky Velociraptor running, with a long tail and a big smile"
+        },
+        {
+          "label": "ANKYLOSAURUS",
+          "subject": "a chunky Ankylosaurus with a bumpy armoured back and a round club tail"
+        },
+        {
+          "label": "PTERANODON",
+          "subject": "a Pteranodon flying with wide wings spread and a long pointed head crest"
+        },
+        {
+          "label": "SPINOSAURUS",
+          "subject": "a friendly Spinosaurus with a big sail on its back, standing near a small pond"
+        },
+        {
+          "label": "DIPLODOCUS",
+          "subject": "a long Diplodocus with a long neck and a long whip tail, smiling"
+        },
+        {
+          "label": "PARASAUROLOPHUS",
+          "subject": "a Parasaurolophus with a long curved head crest, walking happily"
+        },
+        {
+          "label": "ALLOSAURUS",
+          "subject": "a friendly Allosaurus with a big head, small arms and a smiling face"
+        },
+        {
+          "label": "DIMETRODON",
+          "subject": "a Dimetrodon with a large round sail on its back, standing on a rock"
+        },
+        {
+          "label": "IGUANODON",
+          "subject": "an Iguanodon with a thumb spike, standing on two legs and waving"
+        },
+        {
+          "label": "GALLIMIMUS",
+          "subject": "a speedy Gallimimus with a long neck and long legs, running"
+        },
+        {
+          "label": "CARNOTAURUS",
+          "subject": "a Carnotaurus with two little horns above its eyes and tiny arms, looking cheerful"
+        },
+        {
+          "label": "DILOPHOSAURUS",
+          "subject": "a Dilophosaurus with two curved crests on its head, smiling"
+        },
+        {
+          "label": "PROTOCERATOPS",
+          "subject": "a small round Protoceratops with a bony frill, sitting beside a nest"
+        },
+        {
+          "label": "KENTROSAURUS",
+          "subject": "a Kentrosaurus with pointy plates and spikes down its back and tail"
+        },
+        {
+          "label": "TROODON",
+          "subject": "a clever-looking Troodon with big round eyes and a long tail, standing"
+        },
+        {
+          "label": "THERIZINOSAURUS",
+          "subject": "a fluffy Therizinosaurus with a round belly and three long claws on each hand"
+        },
+        {
+          "label": "PLESIOSAURUS",
+          "subject": "a Plesiosaurus swimming in gentle waves, with a long neck and four flippers"
+        },
+        {
+          "label": "ICHTHYOSAURUS",
+          "subject": "a smiling Ichthyosaurus leaping from the sea like a dolphin"
+        },
+        {
+          "label": "MOSASAURUS",
+          "subject": "a big friendly Mosasaurus swimming with a few simple bubbles"
+        },
+        {
+          "label": "HATCHING EGG",
+          "subject": "a baby dinosaur peeking out of a cracked spotty egg"
+        },
+        {
+          "label": "DINO NEST",
+          "subject": "a round nest holding three big spotted dinosaur eggs"
+        },
+        {
+          "label": "BABY T-REX",
+          "subject": "a tiny baby T-Rex with a big head and big eyes, sitting down"
+        },
+        {
+          "label": "BABY TRICERATOPS",
+          "subject": "a baby Triceratops with small horns, standing next to a little flower"
+        },
+        {
+          "label": "BABY STEGOSAURUS",
+          "subject": "a baby Stegosaurus with small round plates, looking up and smiling"
+        },
+        {
+          "label": "BABY LONG NECK",
+          "subject": "a baby long-necked dinosaur nibbling a big leaf"
+        },
+        {
+          "label": "DINO VOLCANO",
+          "subject": "a smiling dinosaur standing in front of a big cone-shaped volcano with a puff of smoke"
+        },
+        {
+          "label": "DINO FOOTPRINTS",
+          "subject": "three big dinosaur footprints in a row on the ground, with a small dino walking behind"
+        },
+        {
+          "label": "DINO SKELETON",
+          "subject": "a simple, friendly dinosaur skeleton with a big skull and round bones"
+        },
+        {
+          "label": "DINO BIRTHDAY",
+          "subject": "a happy dinosaur in a party hat beside a birthday cake with three candles"
+        },
+        {
+          "label": "DINO BALLOONS",
+          "subject": "a smiling dinosaur holding three big balloons on strings"
+        },
+        {
+          "label": "DINO PICNIC",
+          "subject": "a cute dinosaur sitting on a picnic blanket with a basket and an apple"
+        },
+        {
+          "label": "DINO SKATEBOARD",
+          "subject": "a cheerful dinosaur riding a skateboard with a helmet on"
+        },
+        {
+          "label": "DINO BICYCLE",
+          "subject": "a happy dinosaur riding a big-wheeled bicycle"
+        },
+        {
+          "label": "SPACE DINO",
+          "subject": "a dinosaur wearing a round astronaut helmet, floating with a few stars and a small moon"
+        },
+        {
+          "label": "DINO TEA PARTY",
+          "subject": "a dinosaur sitting at a little table with a teapot and two cups"
+        },
+        {
+          "label": "PIRATE DINO",
+          "subject": "a dinosaur dressed as a pirate with a hat and an eye patch, standing next to a treasure chest"
+        },
+        {
+          "label": "FIREFIGHTER DINO",
+          "subject": "a dinosaur wearing a firefighter helmet and holding a hose"
+        },
+        {
+          "label": "DIGGER DINO",
+          "subject": "a dinosaur wearing a hard hat and driving a big digger"
+        },
+        {
+          "label": "DINO BUTTERFLY",
+          "subject": "a dinosaur gently looking at a big butterfly sitting on its nose"
+        },
+        {
+          "label": "RAINY DAY DINO",
+          "subject": "a dinosaur holding a big umbrella with a few raindrops and a puddle"
+        },
+        {
+          "label": "SLEEPY DINO",
+          "subject": "a dinosaur curled up asleep with a crescent moon and a couple of stars"
+        },
+        {
+          "label": "DINO FRIENDS",
+          "subject": "two dinosaurs of different kinds hugging each other, with a heart above them"
+        },
+        {
+          "label": "DINO SNACK TIME",
+          "subject": "a round, happy dinosaur munching a big slice of watermelon"
+        },
+        {
+          "label": "DINO ICE CREAM",
+          "subject": "a smiling dinosaur holding a big ice cream cone with two scoops"
+        },
+        {
+          "label": "JUNGLE DINO",
+          "subject": "a friendly dinosaur peeking out from between big jungle leaves and two palm trees"
+        },
+        {
+          "label": "BEACH DINO",
+          "subject": "a dinosaur on the beach with a bucket and spade next to a small sandcastle"
+        }
+      ]
+    }
+  ],
+  "price_usd": 9.99,
+  "ai_disclosure": {
+    "images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
+    "text": "AI-generated (Claude)"
+  },
+  "niche_test": {
+    "niche": "Cute dinosaurs, bold and easy",
+    "hypothesis": "Evergreen boys' favourite, called 'still rising' for 2026",
+    "planned_by": "anthropic/claude-sonnet-5.5"
+  }
+}
