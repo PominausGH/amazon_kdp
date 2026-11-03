@@ -1,5 +1,5 @@
 {
-  "_help": "Weekly runner takes the first 2 'todo' books whose not_before date has passed. Prebuilt books skip planning and generation. Add new briefs anywhere; order = priority. format: '50-single' (50 pictures, blank backs) or '100-duplex' (100 pictures back-to-back): alternated to A/B test.",
+  "_help": "Weekly runner takes the first 2 'todo' books whose not_before date has passed. Prebuilt books skip planning and generation. Add new briefs anywhere; order = priority. format: '50-single' (50 pictures, blank backs) or '100-duplex' (100 pictures back-to-back): alternated to A/B test. style: toddler | kids | detailed | cozy (detail level of pages; detailed/cozy have no word labels).",
   "books": [
     {
       "slug": "christmas-bold-easy",
@@ -44,6 +44,43 @@
       "ages": "2-5",
       "why": "Home market; Aussie Cosy books by Mimimoo sell at 4.8-5 stars with little competition",
       "format": "100-duplex"
+    },
+    {
+      "slug": "cozy-aussie-life",
+      "status": "todo",
+      "style": "cozy",
+      "format": "50-single",
+      "theme": "Cozy Australian life: bold & easy cosy scenes (beach shack, backyard barbie, koala cafe, rainy Queensland verandah, bush camping, Christmas at the beach) for teens and adults",
+      "ages": "13+",
+      "why": "Cozy bold & easy is the biggest seller category (Coco Wyo 2K-8K reviews); Aussie angle is under-served"
+    },
+    {
+      "slug": "detailed-aussie-wildlife",
+      "status": "todo",
+      "style": "detailed",
+      "format": "50-single",
+      "theme": "Detailed Australian wildlife scenes with decorative patterns: koalas, kangaroos, cockatoos, platypus, wombats among native flowers (waratah, banksia, wattle)",
+      "ages": "8+",
+      "why": "Older kids/adults pay more; detailed patterned animals are evergreen; Aussie angle"
+    },
+    {
+      "slug": "cozy-cat-cafe",
+      "status": "todo",
+      "style": "cozy",
+      "format": "50-single",
+      "theme": "Cozy cats: cute cats in cosy everyday scenes (cafes, bookshops, gardens, bakeries, rainy days) for teens and adults",
+      "ages": "13+",
+      "why": "Cats + cozy = two strongest evergreen signals"
+    },
+    {
+      "slug": "cozy-christmas-2027",
+      "status": "todo",
+      "style": "cozy",
+      "format": "50-single",
+      "theme": "Cozy Christmas: cute festive cosy scenes for teens and adults",
+      "ages": "13+",
+      "not_before": "2027-07-01",
+      "why": "Coco Wyo's Cozy Christmas: 2K reviews; publish Aug-Sep to rank before the season"
     },
     {
       "slug": "farm-animals-first",

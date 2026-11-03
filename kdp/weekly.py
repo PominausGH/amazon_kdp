@@ -52,6 +52,7 @@ def make_pages(slug: str, recipe_path: Path, log: list[str]) -> list[str]:
     cfg = json.loads(recipe_path.read_text())
     ages = cfg.get("reading_age", "2-5")
     pages = cfg["sections"][0]["pages"]
+    style = cfg["sections"][0].get("style", "toddler")
     run_gen = lambda: subprocess.run([sys.executable, "-m", "kdp.aipages", str(recipe_path), "--jobs", "5"],
                                      cwd=ROOT, check=False, capture_output=True, text=True)
     run_gen()
@@ -60,7 +61,7 @@ def make_pages(slug: str, recipe_path: Path, log: list[str]) -> list[str]:
         items = [(aipages.page_path(slug, i, p["subject"]), p["subject"]) for i, p in enumerate(pages, 1)]
         missing = [p for p, _ in items if not p.exists()]
         present = [(p, s) for p, s in items if p.exists()]
-        results = review.review_pages(present, ages)
+        results = review.review_pages(present, ages, style)
         bad = [p for p, r in results.items() if not r["ok"]]
         failing = [(p, results[p]["problems"]) for p in bad] + [(p, ["not generated"]) for p in missing]
         log.append(f"  review round {rnd}: {len(present) - len(bad)}/{len(items)} pages pass")
@@ -80,7 +81,12 @@ def make_cover(slug: str, cfg: dict, log: list[str], n=3) -> Path | None:
     for i in range(1, n + 1):
         f = out / f"option-{i}.png"
         if not f.exists():
-            img, model = aiart.generate(f"{aiart.STYLE}\n\nScene: {cfg['cover_prompt']}\n\nVariation {i}.")
+            style = cfg["sections"][0].get("style", "toddler")
+            audience = ("\nAudience: teens and adults. Use the cute cozy 'bold and easy' look, calm and charming."
+                        if style == "cozy" else
+                        "\nAudience: older kids, teens and adults. Rich, detailed, beautiful illustration."
+                        if style == "detailed" else "")
+            img, model = aiart.generate(f"{aiart.STYLE}{audience}\n\nScene: {cfg['cover_prompt']}\n\nVariation {i}.")
             f.write_bytes(img)
         opts.append(f)
     best, why = review.pick_cover(opts, cfg["title"])

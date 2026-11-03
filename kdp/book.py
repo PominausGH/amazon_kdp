@@ -115,10 +115,14 @@ class Builder:
             p = self.new()
             x, y, w, h = p.safe
             png = subprocess.run(["magick", str(f), "-type", "bilevel", "png:-"], capture_output=True, check=True).stdout
-            p.add(f'<image x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{h - 80:.1f}" '
+            # Toddler/kids pages get a big hollow word label; detailed/cozy pages use the whole page.
+            labelled = s.get("style", "toddler") in ("toddler", "kids")
+            art_h = h - 80 if labelled else h
+            p.add(f'<image x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{art_h:.1f}" '
                   f'preserveAspectRatio="xMidYMid meet" href="data:image/png;base64,{base64.b64encode(png).decode()}"/>')
-            label = pg["label"]
-            outlined_label(p, p.w / 2, y + h - 18, label, 54 if len(label) < 11 else 42 if len(label) < 15 else 34)
+            if labelled:
+                label = pg["label"]
+                outlined_label(p, p.w / 2, y + h - 18, label, 54 if len(label) < 11 else 42 if len(label) < 15 else 34)
             if s.get("single_sided", True):
                 self.blank_back()
         if missing:

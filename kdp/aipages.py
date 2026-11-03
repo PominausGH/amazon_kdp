@@ -18,16 +18,41 @@ from .aiart import generate
 
 ROOT = Path(__file__).resolve().parent.parent
 
-PAGE_STYLE = (
-    "A black and white colouring page for toddlers and preschoolers (ages 2-5), bold and easy style. "
-    "Subject: {subject}. "
-    "Rules: very thick, bold, clean, smooth black outlines of even weight; large simple rounded shapes; "
-    "big open white areas that are easy to colour; every shape fully closed; cute friendly look. "
-    "Pure white background with at most {background}. "
+_COMMON = (
     "NO shading, NO grey, NO gradients, NO hatching, NO texture, NO filled black areas except small eyes. "
     "NO text, NO letters, NO numbers, NO border, NO frame. Not a photo or mockup: just the flat line art. "
-    "Single centred subject that fills most of the square frame."
 )
+
+# Detail level per audience. Recipes pick one with "style" on the ai_pages section.
+STYLES = {
+    "toddler": (
+        "A black and white colouring page for toddlers and preschoolers (ages 2-5), bold and easy style. "
+        "Subject: {subject}. "
+        "Rules: very thick, bold, clean, smooth black outlines of even weight; large simple rounded shapes; "
+        "big open white areas that are easy to colour; every shape fully closed; cute friendly look. "
+        "Pure white background with at most {background}. " + _COMMON +
+        "Single centred subject that fills most of the square frame."),
+    "kids": (
+        "A black and white colouring page for children aged 4-8. Subject: {subject}. "
+        "Rules: clean bold black outlines; the subject plus a simple supporting background scene "
+        "({background}); medium-sized regions, some small details but nothing tiny; every shape closed; "
+        "cute, playful look. " + _COMMON + "The scene fills the square frame."),
+    "detailed": (
+        "A detailed black and white colouring page for older kids, teens and adults (ages 8+). "
+        "Subject: {subject}. Rules: crisp clean black line art of medium weight; a full scene that fills the "
+        "whole frame edge to edge ({background}); lots of distinct closed regions to colour, decorative patterns "
+        "inside larger shapes (florals, swirls, scales, geometric patterns), a satisfying mix of large and small areas; "
+        "every region fully closed. " + _COMMON),
+    "cozy": (
+        "A 'bold and easy cozy' black and white colouring page for teens and adults, in the popular cute cozy hygge "
+        "style. Subject: {subject}. Rules: thick clean rounded black outlines; a cosy, calm, cute scene that fills the "
+        "frame ({background}); lots of charming small objects (plants, cups, books, cushions, snacks, fairy lights) "
+        "each drawn simply with closed outlines; cute characters with simple dot eyes and rosy cheeks; relaxing, "
+        "not cluttered. " + _COMMON),
+}
+PAGE_STYLE = STYLES["toddler"]  # backwards compatible name
+# Detailed/cozy scenes fill a portrait page with no label underneath.
+ASPECT = {"toddler": "1:1", "kids": "1:1", "detailed": "3:4", "cozy": "1:1"}
 
 
 def slugify(s: str) -> str:
@@ -45,12 +70,12 @@ def clean_bw(raw: Path, out: Path):
                     "-bordercolor", "white", "-border", "20", "-type", "bilevel", str(out)], check=True)
 
 
-def make_page(book_slug: str, idx: int, subject: str, size: str, background: str) -> str:
+def make_page(book_slug: str, idx: int, subject: str, size: str, background: str, style: str = "toddler") -> str:
     out = page_path(book_slug, idx, subject)
     if out.exists():
         return f"skip {out.name}"
     out.parent.mkdir(parents=True, exist_ok=True)
-    img, model = generate(PAGE_STYLE.format(subject=subject, background=background), aspect="1:1", size=size)
+    img, model = generate(STYLES[style].format(subject=subject, background=background), aspect=ASPECT[style], size=size)
     raw = out.with_suffix(".raw.png")
     raw.write_bytes(img)
     clean_bw(raw, out)
@@ -77,8 +102,9 @@ def main():
     cfg = json.loads(recipe.read_text())
     subs = subjects(cfg)[: a.only]
     background = cfg.get("page_background", "a simple ground line and one or two small simple details")
+    style = next((s.get("style", "toddler") for s in cfg["sections"] if s["type"] == "ai_pages"), "toddler")
     with ThreadPoolExecutor(a.jobs) as ex:
-        futs = {ex.submit(make_page, recipe.stem, i, s, a.size, background): s for i, s in enumerate(subs, 1)}
+        futs = {ex.submit(make_page, recipe.stem, i, s, a.size, background, style): s for i, s in enumerate(subs, 1)}
         for f in as_completed(futs):
             try:
                 print(f.result(), flush=True)

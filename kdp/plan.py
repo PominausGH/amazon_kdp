@@ -81,8 +81,20 @@ FORMATS = {  # A/B test (Nov 2026): competitor anchor is 100 pictures back-to-ba
 }
 
 
+STYLE_NOTES = {
+    "toddler": "Toddler bold & easy: one big simple subject per page.",
+    "kids": "Ages 4-8: subject plus a simple background scene.",
+    "detailed": "Older kids/teens/adults: each page is a full rich SCENE with decorative patterns. Subjects are scene "
+                "descriptions (1-2 sentences). Labels are still required for internal naming.",
+    "cozy": "Cozy bold & easy for teens/adults: calm, cute everyday-comfort scenes (rooms, cafes, gardens, seasons, "
+            "cute animals doing cosy things) with many small charming objects. Subjects are scene descriptions.",
+}
+
+
 def plan(brief: dict) -> dict:
-    fmt = FORMATS[brief.get("format", "50-single")]
+    style = brief.get("style", "toddler")
+    # Older audiences colour with markers: keep them single-sided.
+    fmt = FORMATS[brief.get("format", "50-single" if style in ("detailed", "cozy") else "50-single")]
     n = fmt["pages"]
     example = json.loads(EXAMPLE.read_text())
     example_view = {k: example[k] for k in ("title", "subtitle", "keywords", "description_html", "cover_prompt")}
@@ -90,7 +102,7 @@ def plan(brief: dict) -> dict:
     msgs = [
         {"role": "system", "content": SYSTEM},
         {"role": "user", "content": (
-            f"Brief: {json.dumps(brief)}\nNumber of pages: {n}\nFormat: {fmt['note']}\n\n"
+            f"Brief: {json.dumps(brief)}\nNumber of pages: {n}\nFormat: {fmt['note']}\nStyle: {STYLE_NOTES[style]}\n\n"
             f"Return JSON with exactly these fields:\n{FIELDS}\n\n"
             f"Example of the style (a different book, partial):\n{json.dumps(example_view, indent=1)}")},
     ]
@@ -106,7 +118,7 @@ def plan(brief: dict) -> dict:
     pages = r.pop("pages")
     recipe = {**r,
               "seed": abs(hash(brief["slug"])) % 100000,
-              "sections": [{"type": "ai_pages", "single_sided": fmt["single_sided"], "pages": pages}],
+              "sections": [{"type": "ai_pages", "single_sided": fmt["single_sided"], "style": style, "pages": pages}],
               "format": brief.get("format", "50-single"),
               "price_usd": 9.99,
               "ai_disclosure": {"images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",

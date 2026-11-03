@@ -17,7 +17,7 @@ FAIL the page if ANY of these are true:
 2. a border or frame drawn around the whole picture
 3. it is a photo or mockup instead of flat line art
 4. large solid black filled areas (small eyes/pupils are fine)
-5. too much fine detail or clutter to colour at this age (lots of tiny regions)
+5. {detail_rule}
 6. the subject is not clearly recognisable as the intended subject
 7. visible drawing glitches: extra/missing limbs, merged or floating parts, broken outlines
 Reply JSON only: {{"ok": true|false, "problems": ["short reason", ...]}}"""
@@ -29,10 +29,18 @@ or have obvious drawing glitches.
 Reply JSON only: {{"best": <1-based index or 0 if all disqualified>, "reasons": "one sentence"}}"""
 
 
-def review_page(path: Path, subject: str, ages: str) -> dict:
+DETAIL_RULES = {
+    "toddler": "too much fine detail or clutter for a toddler (should be big simple shapes)",
+    "kids": "so much tiny detail that a 4-8 year old could not colour it",
+    "detailed": "too SIMPLE for older kids/adults (should be a full detailed scene with many regions), or regions so tiny they are just texture",
+    "cozy": "messy or chaotic instead of calm and cute, or line work too thin/fine for a 'bold and easy' style",
+}
+
+
+def review_page(path: Path, subject: str, ages: str, style: str = "toddler") -> dict:
     try:
         r = chat_json([{"role": "user", "content": [
-            {"type": "text", "text": PAGE_RUBRIC.format(subject=subject, ages=ages)},
+            {"type": "text", "text": PAGE_RUBRIC.format(subject=subject, ages=ages, detail_rule=DETAIL_RULES[style])},
             image_part(path)]}], REVIEWER, max_tokens=300, temperature=0)
         return {"ok": bool(r.get("ok")), "problems": r.get("problems", [])}
     except LLMError as e:
@@ -40,9 +48,9 @@ def review_page(path: Path, subject: str, ages: str) -> dict:
         return {"ok": False, "problems": [f"review failed: {e}"], "error": True}
 
 
-def review_pages(items: list[tuple[Path, str]], ages: str, jobs=6) -> dict[Path, dict]:
+def review_pages(items: list[tuple[Path, str]], ages: str, style: str = "toddler", jobs=6) -> dict[Path, dict]:
     with ThreadPoolExecutor(jobs) as ex:
-        res = ex.map(lambda it: review_page(it[0], it[1], ages), items)
+        res = ex.map(lambda it: review_page(it[0], it[1], ages, style), items)
     return {p: r for (p, _), r in zip(items, res)}
 
 
