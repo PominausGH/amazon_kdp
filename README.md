@@ -57,3 +57,17 @@ Queue (2 per week):
 - [ ] Choose your pen name. `books/_defaults.json` currently says **"Crayon Cove Press"** as a placeholder.
 - [ ] Open each `contact_sheet.png` and cover preview yourself.
 - [ ] In KDP, order a **proof copy** of the first book before spending on ads.
+
+## Pricing (set on KDP 2026-11-03)
+
+Every price sits on or just above the store's 60%-royalty threshold. Below it the rate drops to 50%, which roughly halves the royalty.
+
+| Store | Price | Royalty |
+|---|---|---|
+| Amazon.com | $9.99 | $3.15 |
+| Amazon.com.au | AUD 13.99 (60% starts at 13.99) | AUD 3.11 |
+| Amazon.co.uk | £7.99 | £2.64 |
+| Amazon.ca | CAD 13.99 | CAD 4.86 |
+| EU stores | €9.99 | €3.51 |
+
+Expanded Distribution is off, because it only pays 40% (about $1.16).
