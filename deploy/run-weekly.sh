@@ -9,7 +9,15 @@ git config user.name  "kdp-weekly (VPS2)"
 git config user.email "kdp-weekly@localhost"
 
 BRANCH=${KDP_BRANCH:-worktree-kdp-pipeline}
-git fetch -q origin "$BRANCH" && git checkout -q "$BRANCH" && git reset -q --hard "origin/$BRANCH"
+# Never `reset --hard` here: if last week's push failed, the unpushed commit holds
+# books and paid-for AI art. Retry that push first, then rebase onto GitHub's copy.
+git fetch -q origin "$BRANCH" && git checkout -q "$BRANCH"
+if [ -n "$(git rev-list "origin/$BRANCH..HEAD" 2>/dev/null)" ] && [ -n "${GH_TOKEN:-}" ]; then
+    echo "retrying push of unpushed commits from a previous run" >&2
+    git push -q "https://x-access-token:${GH_TOKEN}@github.com/${GH_REPO:-PominausGH/amazon_kdp}.git" "HEAD:$BRANCH" || true
+    git fetch -q origin "$BRANCH"
+fi
+git rebase -q "origin/$BRANCH" || { git rebase --abort; echo "rebase failed: building on local copy" >&2; }
 
 TODAY=$(date +%F)
 python3 -m kdp.weekly
