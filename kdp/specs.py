@@ -13,6 +13,7 @@ SPINE_PER_PAGE_WHITE = 0.002252
 COVER_BLEED = 0.125
 MIN_PAGES = 24
 MIN_PAGES_SPINE_TEXT = 79  # KDP won't allow spine text below this
+SPINE_TEXT_CLEARANCE = 0.0625  # min gap between spine text and each spine edge (inches)
 BARCODE_BOX = (2.0, 1.2)   # KDP places the barcode bottom-right of the back cover
 
 TRIMS = {

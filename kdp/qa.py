@@ -43,7 +43,31 @@ def check(book_dir: Path) -> list[str]:
         errs.append("keyword over 50 chars")
     if len(listing["title"]) + len(listing.get("subtitle", "")) > 200:
         errs.append("title+subtitle over 200 chars")
+    if i["pages"] >= specs.MIN_PAGES_SPINE_TEXT:
+        errs += spine_clearance(book_dir / "cover.pdf", listing["trim"], i["pages"])
     return errs
+
+
+def spine_clearance(cover: Path, trim: str, pages: int, dpi=600) -> list[str]:
+    """KDP rejects spine text closer than 0.0625" to a spine edge (Christmas book, 2026-11-05).
+    Render just the spine and require the edge strips to hold no light (text) pixels."""
+    tw, _ = specs.TRIMS[trim]
+    x0, w = specs.COVER_BLEED + tw, specs.spine_width(pages)
+    pgm = subprocess.run(["pdftoppm", "-gray", "-r", str(dpi), "-singlefile",
+                          "-x", str(round(x0 * dpi)), "-y", str(2 * dpi),
+                          "-W", str(round(w * dpi)), "-H", str(7 * dpi), str(cover)],  # no output root -> stdout
+                         capture_output=True, check=True).stdout
+    # binary PGM: "P5\n<w> <h>\n<max>\n" then w*h bytes
+    parts = pgm.split(b"\n", 3)
+    W, H = map(int, parts[1].split())
+    data = parts[3]
+    m = round(specs.SPINE_TEXT_CLEARANCE * dpi) - 2  # ignore antialiasing at the spine boundary
+    def light_cols(a, b):
+        return sum(1 for x in range(a, b) if any(data[y * W + x] > 200 for y in range(0, H, 3)))
+    left, right = light_cols(2, m), light_cols(W - m, W - 2)
+    if left or right:
+        return [f"spine text within {specs.SPINE_TEXT_CLEARANCE}\" of spine edge (left {left}, right {right} px cols)"]
+    return []
 
 
 if __name__ == "__main__":

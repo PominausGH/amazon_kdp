@@ -334,10 +334,21 @@ class Builder:
         # spine
         p.add(f'<rect x="{spine_x:.1f}" y="0" width="{spine:.1f}" height="{chh * P:.1f}" fill="{accent}"/>')
         if n >= specs.MIN_PAGES_SPINE_TEXT:
-            sx = spine_x + spine / 2
-            p.add(f'<text transform="translate({sx + 5:.1f},{chh * P / 2:.1f}) rotate(90)" text-anchor="middle" '
-                  f'font-family="{FONT}" font-weight="bold" font-size="{min(14, spine * .55):.1f}" fill="#fff">'
-                  f'{escape(c["title"].upper())}</text>')
+            # After rotate(90) glyphs grow from the baseline towards +x, so the baseline sits
+            # half a glyph-height LEFT of centre. KDP rejects spine text closer than 0.0625" to
+            # either spine edge (Christmas book was bounced on 2026-11-05 for exactly this).
+            GLYPH = 0.74  # measured ink height / font size for Ubuntu Bold caps incl. '&'
+            clear = specs.SPINE_TEXT_CLEARANCE * P + 1.0  # +1pt safety
+            fs = min(14, (spine - 2 * clear) / GLYPH)
+            if fs < 5:
+                fs = 0  # spine too thin for legible text: leave it plain
+            if fs:
+                sx = spine_x + spine / 2
+                base = sx - fs * GLYPH / 2
+                assert base - spine_x >= clear - 0.01 and spine_x + spine - (base + fs * GLYPH) >= clear - 0.01
+                p.add(f'<text transform="translate({base:.2f},{chh * P / 2:.1f}) rotate(90)" text-anchor="middle" '
+                      f'font-family="{FONT}" font-weight="bold" font-size="{fs:.2f}" fill="#fff">'
+                      f'{escape(c["title"].upper())}</text>')
         return p
 
 
