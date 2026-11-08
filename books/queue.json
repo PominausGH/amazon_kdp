@@ -15,19 +15,21 @@
     },
     {
       "slug": "christmas-activity-4-8",
-      "status": "todo",
+      "status": "built",
       "prebuilt": true,
       "theme": "Christmas activity: word search, dot to dot, mazes",
       "ages": "4-8",
-      "not_before": "2026-11-08"
+      "not_before": "2026-11-08",
+      "built": "2026-11-08"
     },
     {
       "slug": "mazes-ages-4-8",
-      "status": "todo",
+      "status": "built",
       "prebuilt": true,
       "theme": "Mazes easy to tricky",
       "ages": "4-8",
-      "not_before": "2026-11-08"
+      "not_before": "2026-11-08",
+      "built": "2026-11-08"
     },
     {
       "slug": "dinosaurs-bold-easy",
