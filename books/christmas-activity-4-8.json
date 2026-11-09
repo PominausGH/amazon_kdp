@@ -275,5 +275,6 @@
     "niche": "Christmas activity ages 4-8",
     "hypothesis": "Seasonal + activity format; tests the bundle angle"
   },
-  "cover_prompt": "A fun Christmas puzzle-time scene: a smiling penguin and a snowman holding a big pencil next to a small hedge maze, a decorated Christmas tree, presents, stars and snowflakes, cheerful and playful."
+  "cover_prompt": "A fun Christmas puzzle-time scene: a smiling penguin and a snowman holding a big pencil next to a small hedge maze, a decorated Christmas tree, presents, stars and snowflakes, cheerful and playful.",
+  "cover_art": "art/christmas-activity-4-8/option-2.png"
 }
