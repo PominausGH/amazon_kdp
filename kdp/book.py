@@ -13,7 +13,7 @@ from pathlib import Path
 from xml.sax.saxutils import escape
 
 from . import specs
-from .gen import bold, dots, mandala, maze, wordsearch
+from .gen import bold, dots, mandala, maze, sudoku, wordsearch
 from .svg import FONT, Page, fit, group
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -41,6 +41,7 @@ class Builder:
         self.pages: list[Page] = []
         self.solutions: list[tuple[str, callable]] = []  # deferred solution drawers
         self.cover_art: list[str] = []  # coloured snippets in a 400x400 box for the cover
+        self.colour_samples: list[Page] = []  # coloured-in copies of colouring pages (previews only)
 
     def new(self) -> Page:
         p = Page(self.w_in, self.h_in)
@@ -61,7 +62,7 @@ class Builder:
         for line in c.get("title_lines", [c["title"]]):
             p.text(p.w / 2, ty, line, size=40)
             ty += 46
-        for line in _wrap(c.get("subtitle", ""), 60):
+        for line in _wrap(c.get("inner_subtitle", c.get("subtitle", "")), 60):
             p.text(p.w / 2, ty + 10, line, size=15, weight="normal")
             ty += 20
         if c.get("author"):
@@ -106,9 +107,10 @@ class Builder:
     def section_ai_pages(self, s):
         """AI line art from art/<slug>/pages/ (made by `python -m kdp.aipages`)."""
         from .aipages import page_path
+        src = s.get("from_slug", self.slug)  # reuse another book's pages
         missing = []
         for i, pg in enumerate(s["pages"], 1):
-            f = page_path(self.slug, i, pg["subject"])
+            f = page_path(src, pg.get("idx", i), pg["subject"])
             if not f.exists():
                 missing.append(f.name)
                 continue
@@ -123,6 +125,16 @@ class Builder:
             if labelled:
                 label = pg["label"]
                 outlined_label(p, p.w / 2, y + h - 18, label, 54 if len(label) < 11 else 42 if len(label) < 15 else 34)
+            if i in s.get("coloured_samples", []):
+                # preview-only copy of this page, coloured in, for the back cover and A+ image
+                from .colourise import colourise
+                cp = Page(self.w_in, self.h_in)
+                cpng = base64.b64encode(colourise(f, seed=i)).decode()
+                cp.add(f'<image x="{x:.1f}" y="{y:.1f}" width="{w:.1f}" height="{art_h:.1f}" '
+                       f'preserveAspectRatio="xMidYMid meet" href="data:image/png;base64,{cpng}"/>')
+                if labelled:
+                    outlined_label(cp, cp.w / 2, y + h - 18, label, 54 if len(label) < 11 else 42 if len(label) < 15 else 34)
+                self.colour_samples.append(cp)
             if s.get("single_sided", True):
                 self.blank_back()
         if missing:
@@ -198,6 +210,21 @@ class Builder:
             self.solutions.append((f"Dot to dot {i}", lambda bw, bh, sh=shape, n=s.get("points", 30):
                                    (dots.dot_to_dot(sh, n, min(bw, bh), solution=True, font=9), min(bw, bh), min(bw, bh))))
 
+    def section_sudoku(self, s):
+        for i in range(1, s["count"] + 1):
+            pz = sudoku.PictureSudoku(self.rng, blanks=s.get("blanks", 6) + (i - 1) * s.get("step", 0))
+            p = self._titled(f"PICTURE SUDOKU {i}")
+            x, y, w, h = p.safe
+            p.text(p.w / 2, y + 82, "Draw the missing pictures.", size=16, weight="normal")
+            p.text(p.w / 2, y + 104, "Every row, column and box has one of each.", size=16, weight="normal")
+            box = min(w - 60, h - 260)
+            p.add(group(pz.svg(box), x + (w - box) / 2, y + 140))
+            # key: the four pictures
+            ky = y + 140 + box + 60
+            for k in range(4):
+                p.add(sudoku.icon(k, x + w * (k + .5) / 4, ky, 56))
+            self.solutions.append((f"Picture sudoku {i}", lambda bw, bh, pz=pz: (pz.svg(min(bw, bh), True), min(bw, bh), min(bw, bh))))
+
     def solution_pages(self):
         if not self.solutions:
             return
@@ -234,7 +261,11 @@ class Builder:
         if not content:
             return []
         step = max(1, len(content) // k)
-        return content[::step][:k]
+        picks = content[::step][:k]
+        if self.colour_samples and k >= 3:
+            # show a finished, coloured-in page at each end and a puzzle in the middle
+            picks = [self.colour_samples[0], content[0], self.colour_samples[-1]] + picks[3:k]
+        return picks
 
     def _front_vector(self, p, c, front_x, fw, fh, bleed, safe, accent):
         # title band

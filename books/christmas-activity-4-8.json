@@ -5,14 +5,14 @@
     "Activity Book"
   ],
   "subtitle": "Word Search, Dot to Dot and Mazes: 40 Holiday Puzzles with Answers",
-  "cover_subtitle": "Word Search · Dot to Dot · Mazes",
+  "cover_subtitle": "92 Activities: Puzzles, Mazes & Coloring",
   "badge": "AGES\n4-8",
-  "cover_tagline": "40 holiday puzzles · Answers included",
+  "cover_tagline": "92 holiday activities \u00b7 Answers included",
   "cover_accent": "#2a9d8f",
   "cover_bg": "#fff4f4",
   "back_heading": "A puzzle for every day of the holidays!",
   "back_text": [
-    "12 Christmas word searches, 12 dot-to-dot pictures and 16 mazes, from easy to tricky.",
+    "20 Christmas word searches, 16 Christmas dot-to-dots, 12 picture sudokus, 20 mazes from easy to tricky and 24 big coloring pages.",
     "Perfect for road trips, rainy days and the countdown to Christmas. All answers at the back."
   ],
   "seed": 1225,
@@ -175,6 +175,110 @@
             "GIVE",
             "HAPPY"
           ]
+        },
+        {
+          "title": "Gingerbread",
+          "words": [
+            "GINGER",
+            "DOUGH",
+            "ICING",
+            "CANDY",
+            "OVEN",
+            "SPICE",
+            "CUTTER",
+            "SWEET"
+          ]
+        },
+        {
+          "title": "North Pole",
+          "words": [
+            "NORTH",
+            "POLE",
+            "ICE",
+            "SNOW",
+            "ELVES",
+            "WORKSHOP",
+            "MAP",
+            "WIND"
+          ]
+        },
+        {
+          "title": "Warm Clothes",
+          "words": [
+            "COAT",
+            "GLOVES",
+            "SCARF",
+            "BOOTS",
+            "HAT",
+            "SWEATER",
+            "SOCKS",
+            "PAJAMAS"
+          ]
+        },
+        {
+          "title": "Christmas Songs",
+          "words": [
+            "SING",
+            "CAROL",
+            "BELLS",
+            "CHOIR",
+            "DRUM",
+            "HUM",
+            "TUNE",
+            "CHIME"
+          ]
+        },
+        {
+          "title": "Baking Day",
+          "words": [
+            "FLOUR",
+            "SUGAR",
+            "EGGS",
+            "BUTTER",
+            "MIX",
+            "BAKE",
+            "TRAY",
+            "SPOON"
+          ]
+        },
+        {
+          "title": "Toy Shop",
+          "words": [
+            "DOLL",
+            "TRAIN",
+            "ROBOT",
+            "KITE",
+            "BLOCKS",
+            "PUZZLE",
+            "TEDDY",
+            "CAR"
+          ]
+        },
+        {
+          "title": "Snowy Fun",
+          "words": [
+            "SLED",
+            "SKATE",
+            "SKI",
+            "SNOWBALL",
+            "FORT",
+            "ANGEL",
+            "SLIDE",
+            "FROST"
+          ]
+        },
+        {
+          "title": "Holiday Lights",
+          "words": [
+            "LIGHT",
+            "GLOW",
+            "SPARKLE",
+            "STAR",
+            "LAMP",
+            "CANDLE",
+            "SHINE",
+            "BRIGHT"
+          ]
         }
       ]
     },
@@ -182,31 +286,173 @@
       "type": "dots",
       "points": 26,
       "shapes": [
+        "xmas_tree",
         "star",
-        "heart",
-        "house",
-        "rocket",
-        "fish",
-        "diamond",
-        "cat",
-        "dinosaur",
-        "truck",
-        "sailboat",
-        "whale",
-        "flower"
+        "bell",
+        "candy_cane",
+        "stocking",
+        "gift",
+        "ornament",
+        "gingerbread",
+        "mitten",
+        "candle",
+        "santa_hat",
+        "snowman",
+        "sleigh",
+        "snowflake",
+        "lantern",
+        "gingerbread_house"
       ]
+    },
+    {
+      "type": "ai_pages",
+      "from_slug": "christmas-bold-easy",
+      "style": "kids",
+      "single_sided": false,
+      "coloured_samples": [
+        6,
+        16
+      ],
+      "pages": [
+        {
+          "idx": 1,
+          "subject": "jolly Santa Claus waving, big round belly, big beard",
+          "label": "SANTA"
+        },
+        {
+          "idx": 2,
+          "subject": "a Christmas tree with a star on top and round baubles, presents underneath",
+          "label": "CHRISTMAS TREE"
+        },
+        {
+          "idx": 3,
+          "subject": "a happy snowman with a top hat, scarf and carrot nose",
+          "label": "SNOWMAN"
+        },
+        {
+          "idx": 4,
+          "subject": "a cute baby reindeer with antlers and a big round nose",
+          "label": "REINDEER"
+        },
+        {
+          "idx": 5,
+          "subject": "a smiling gingerbread man with icing buttons",
+          "label": "GINGERBREAD MAN"
+        },
+        {
+          "idx": 6,
+          "subject": "a stack of three wrapped presents with big bows",
+          "label": "PRESENTS"
+        },
+        {
+          "idx": 7,
+          "subject": "a Christmas stocking hanging from a hook, with a candy cane peeking out",
+          "label": "STOCKING"
+        },
+        {
+          "idx": 8,
+          "subject": "two crossed striped candy canes with a bow",
+          "label": "CANDY CANES"
+        },
+        {
+          "idx": 9,
+          "subject": "a cheerful little Christmas elf with pointy hat and curly shoes",
+          "label": "ELF"
+        },
+        {
+          "idx": 10,
+          "subject": "Santa's sleigh, big and simple, side view, with three wrapped presents in it, no reindeer",
+          "label": "SANTA'S SLEIGH"
+        },
+        {
+          "idx": 14,
+          "subject": "a cute penguin wearing a woolly hat and scarf",
+          "label": "PENGUIN"
+        },
+        {
+          "idx": 15,
+          "subject": "a cuddly polar bear cub sitting in the snow",
+          "label": "POLAR BEAR"
+        },
+        {
+          "idx": 16,
+          "subject": "a mug of hot cocoa with marshmallows and steam",
+          "label": "HOT COCOA"
+        },
+        {
+          "idx": 18,
+          "subject": "a Christmas wreath with a big bow and berries",
+          "label": "WREATH"
+        },
+        {
+          "idx": 20,
+          "subject": "a toy nutcracker soldier standing tall, simple shapes",
+          "label": "NUTCRACKER"
+        },
+        {
+          "idx": 22,
+          "subject": "a little toy train engine with one carriage",
+          "label": "TOY TRAIN"
+        },
+        {
+          "idx": 25,
+          "subject": "a very simple gingerbread house with a door, one window and a few big candy dots, minimal detail",
+          "label": "GINGERBREAD HOUSE"
+        },
+        {
+          "idx": 26,
+          "subject": "one big round Christmas cookie shaped like a star next to a glass of milk, very simple",
+          "label": "COOKIES & MILK"
+        },
+        {
+          "idx": 29,
+          "subject": "a snow globe with a little house inside",
+          "label": "SNOW GLOBE"
+        },
+        {
+          "idx": 34,
+          "subject": "a cosy fireplace with two stockings hanging on it",
+          "label": "FIREPLACE"
+        },
+        {
+          "idx": 36,
+          "subject": "a small house with snow on the roof and a wreath on the door",
+          "label": "SNOWY HOUSE"
+        },
+        {
+          "idx": 40,
+          "subject": "a little fox wearing a scarf in the snow",
+          "label": "FOX"
+        },
+        {
+          "idx": 45,
+          "subject": "a big cute reindeer leaping in the air, large, filling the frame, a couple of small clouds",
+          "label": "REINDEER FLYING"
+        },
+        {
+          "idx": 50,
+          "subject": "a child happily opening a big present",
+          "label": "CHRISTMAS MORNING"
+        }
+      ]
+    },
+    {
+      "type": "sudoku",
+      "count": 12,
+      "blanks": 5,
+      "step": 0.5
     },
     {
       "type": "maze",
       "levels": [
         {
-          "count": 8,
+          "count": 10,
           "cols": 8,
           "rows": 10,
           "stroke": 5
         },
         {
-          "count": 8,
+          "count": 10,
           "cols": 12,
           "rows": 15,
           "stroke": 4
@@ -266,9 +512,9 @@
     "Children's Books > Activities, Crafts & Games > Activity Books",
     "Children's Books > Holidays & Celebrations > Christmas"
   ],
-  "description_html": "<p><b>40 Christmas puzzles for ages 4-8.</b></p><ul><li>12 Christmas word searches (across and down only, great for new readers)</li><li>12 dot-to-dot pictures</li><li>16 mazes from easy to medium</li><li>All answers at the back</li></ul><p>A perfect stocking stuffer.</p>",
+  "description_html": "<p><b>92 Christmas activities for ages 4-8.</b></p><ul><li>20 Christmas word searches (across and down only, great for new readers)</li><li>16 Christmas dot-to-dots: tree, stocking, gingerbread man, sleigh and more</li><li>12 picture sudokus (no reading or numbers needed)</li><li>20 mazes from easy to tricky</li><li>24 big, bold Christmas coloring pages</li><li>All answers at the back</li></ul><p>A perfect stocking stuffer.</p>",
   "ai_disclosure": {
-    "images": "Cover art AI-generated (vector art written by an AI model); puzzles algorithmic",
+    "images": "Cover art and coloring pages AI-generated (Google Gemini via OpenRouter), coloring pages cleaned to black & white; puzzles algorithmic",
     "text": "AI-generated"
   },
   "niche_test": {
@@ -276,5 +522,6 @@
     "hypothesis": "Seasonal + activity format; tests the bundle angle"
   },
   "cover_prompt": "A fun Christmas puzzle-time scene: a smiling penguin and a snowman holding a big pencil next to a small hedge maze, a decorated Christmas tree, presents, stars and snowflakes, cheerful and playful.",
-  "cover_art": "art/christmas-activity-4-8/option-2.png"
+  "cover_art": "art/christmas-activity-4-8/option-2.png",
+  "inner_subtitle": "Word Search, Dot to Dot, Picture Sudoku, Mazes and Coloring: 92 Holiday Activities with Answers"
 }
