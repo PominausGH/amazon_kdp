@@ -89,11 +89,10 @@ def print_cost_usd(page_count: int) -> float:
 
 
 def hc_print_cost_usd(page_count: int) -> float:
-    """Amazon.com B&W hardcover, ESTIMATE from third-party guides (2026-11): 75-108 pages flat $6.80,
-    else $5.65 + $0.017/page for large trims. KDP's pricing page shows the real figure."""
-    if page_count <= 108:
-        return 6.80
-    return 5.65 + 0.017 * page_count
+    """Amazon.com B&W hardcover, 8.25x11, white paper. MEASURED on KDP's pricing page 2026-11-10:
+    104 pages = $7.49, 114 pages = $7.59 -> $6.45 + $0.01/page. (Third-party guides said $6.80
+    flat for 75-108 pages: wrong for this trim.) Re-check if trim or page range changes a lot."""
+    return round(6.45 + 0.01 * page_count, 2)
 
 
 def royalty_usd(list_price: float, page_count: int, binding: str = "paperback") -> float:
