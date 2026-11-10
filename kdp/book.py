@@ -36,6 +36,7 @@ class Builder:
     def __init__(self, cfg: dict):
         self.cfg = cfg
         self.trim = cfg.get("trim", "8.5x11")
+        self.binding = cfg.get("binding", "paperback")
         self.w_in, self.h_in = specs.TRIMS[self.trim]
         self.rng = random.Random(cfg.get("seed", 1))
         self.pages: list[Page] = []
@@ -108,7 +109,7 @@ class Builder:
     def section_ai_pages(self, s):
         """AI line art from art/<slug>/pages/ (made by `python -m kdp.aipages`)."""
         from .aipages import page_path
-        src = s.get("from_slug", self.slug)  # reuse another book's pages
+        src = s.get("from_slug", self.cfg.get("art_slug", self.slug))  # reuse another book's pages
         missing = []
         for i, pg in enumerate(s["pages"], 1):
             f = page_path(src, pg.get("idx", i), pg["subject"])
@@ -368,15 +369,18 @@ class Builder:
     def build_cover(self) -> Page:
         c = self.cfg
         n = len(self.pages)
-        cw, chh = specs.cover_size(self.trim, n)
+        g = specs.cover_geom(self.trim, n, self.binding)
+        cw, chh = g["full_w"], g["full_h"]
         P = specs.PT
         p = Page(cw, chh, bg=c.get("cover_bg", "#fff4d6"))
-        bleed, spine = specs.COVER_BLEED * P, specs.spine_width(n) * P
-        back_x, spine_x = bleed, bleed + self.w_in * P
+        # "bleed" = outer edge beyond each panel: 0.125" bleed (paperback) or 0.591" wrap (hardcover)
+        bleed, spine = g["edge"] * P, g["spine"] * P
+        back_x, spine_x = bleed, bleed + g["panel_w"] * P
         front_x = spine_x + spine
-        fw, fh = self.w_in * P, self.h_in * P
+        fw, fh = g["panel_w"] * P, g["panel_h"] * P
         accent = c.get("cover_accent", "#ff6b6b")
-        safe = 0.375 * P  # keep text well clear of trim
+        # keep text well clear of trim; hardcover must also clear the hinge beside the spine
+        safe = max(0.375, g["hinge"] + specs.HC_MARGIN if g["hinge"] else 0) * P
         if c.get("cover_art"):
             self._front_ai(p, c, front_x, fw, fh, bleed, safe, accent, chh * P)
         else:
@@ -484,7 +488,13 @@ def render_pdf(pages: list[Page], workdir: Path, out_pdf: Path):
 def build(recipe: Path) -> Path:
     defaults = recipe.parent / "_defaults.json"
     cfg = json.loads(defaults.read_text()) if defaults.exists() else {}
-    cfg.update(json.loads(recipe.read_text()))
+    own = json.loads(recipe.read_text())
+    if own.get("extends"):
+        # e.g. a hardcover edition: start from the paperback's recipe and override a few keys
+        base = recipe.parent / f"{own['extends']}.json"
+        cfg.update(json.loads(base.read_text()))
+        cfg["art_slug"] = own["extends"]
+    cfg.update(own)
     slug = recipe.stem
     out = OUT / slug
     if out.exists():
@@ -499,15 +509,21 @@ def build(recipe: Path) -> Path:
     aplus_banner(b, out / "aplus_peek_inside.png")
     n = len(b.pages)
     price = cfg.get("price_usd", 9.99)
+    binding = cfg.get("binding", "paperback")
+    if binding == "hardcover" and n < specs.HC_MIN_PAGES:
+        raise SystemExit(f"hardcover needs {specs.HC_MIN_PAGES}+ pages, got {n}")
     listing = {
+        "binding": binding,
         "title": cfg["title"], "subtitle": cfg.get("subtitle", ""), "author": cfg.get("author", ""),
         "description_html": cfg.get("description_html", ""), "keywords": cfg.get("keywords", []),
         "categories": cfg.get("categories", []), "reading_age": cfg.get("reading_age", ""),
         "trim": cfg.get("trim", "8.5x11"), "bleed": False, "paper": "white", "interior": "black & white",
-        "cover_finish": "matte", "low_content_book": False, "page_count": n,
-        "cover_size_in": [round(v, 4) for v in specs.cover_size(cfg.get("trim", "8.5x11"), n)],
-        "price_usd": price, "est_print_cost_usd": specs.print_cost_usd(n),
-        "est_royalty_usd": specs.royalty_usd(price, n),
+        "low_content_book": False, "page_count": n,
+        "cover_size_in": [round(v, 4) for v in specs.cover_size(cfg.get("trim", "8.5x11"), n, binding)],
+        "price_usd": price,
+        "est_print_cost_usd": round(specs.hc_print_cost_usd(n) if binding == "hardcover" else specs.print_cost_usd(n), 2),
+        "est_royalty_usd": specs.royalty_usd(price, n, binding),
+        "cover_finish": "matte" if binding == "paperback" else "case laminate (matte)",
         "ai_disclosure": cfg.get("ai_disclosure", {}),
         "niche_test": cfg.get("niche_test", {}),
     }

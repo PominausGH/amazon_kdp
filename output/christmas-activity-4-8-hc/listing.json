@@ -1,0 +1,43 @@
+{
+  "binding": "hardcover",
+  "title": "Christmas Activity Book for Kids Ages 4-8",
+  "subtitle": "Word Search, Dot to Dot and Mazes: 40 Holiday Puzzles with Answers",
+  "author": "Crayon Cove Press",
+  "description_html": "<p><b>92 Christmas activities for ages 4-8.</b></p><ul><li>20 Christmas word searches (across and down only, great for new readers)</li><li>16 Christmas dot-to-dots: tree, stocking, gingerbread man, sleigh and more</li><li>12 picture sudokus (no reading or numbers needed)</li><li>20 mazes from easy to tricky</li><li>24 big, bold Christmas coloring pages</li><li>All answers at the back</li></ul><p>A perfect stocking stuffer.</p>",
+  "keywords": [
+    "christmas activity book for kids 4-8",
+    "christmas word search for kids",
+    "christmas dot to dot kids",
+    "christmas mazes for kids",
+    "stocking stuffers for kids 6-8",
+    "holiday puzzle book kids with answers",
+    "christmas gifts for kids travel activities"
+  ],
+  "categories": [
+    "Children's Books > Activities, Crafts & Games > Activity Books",
+    "Children's Books > Holidays & Celebrations > Christmas"
+  ],
+  "reading_age": "4-8",
+  "trim": "8.25x11",
+  "bleed": false,
+  "paper": "white",
+  "interior": "black & white",
+  "low_content_book": false,
+  "page_count": 114,
+  "cover_size_in": [
+    18.522,
+    12.418
+  ],
+  "price_usd": 16.99,
+  "est_print_cost_usd": 7.59,
+  "est_royalty_usd": 2.61,
+  "cover_finish": "case laminate (matte)",
+  "ai_disclosure": {
+    "images": "Cover art and coloring pages AI-generated (Google Gemini via OpenRouter), coloring pages cleaned to black & white; puzzles algorithmic",
+    "text": "AI-generated"
+  },
+  "niche_test": {
+    "niche": "Christmas activity ages 4-8",
+    "hypothesis": "Seasonal + activity format; tests the bundle angle"
+  }
+}

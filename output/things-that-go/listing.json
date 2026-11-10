@@ -1,4 +1,5 @@
 {
+  "binding": "paperback",
   "title": "Things That Go! Bold & Easy Coloring Book for Toddlers",
   "subtitle": "Trucks, Diggers, Garbage Trucks, Tractors & More: 50 Big Simple Pictures for Ages 1-4",
   "author": "Crayon Cove Press",
@@ -21,7 +22,6 @@
   "bleed": false,
   "paper": "white",
   "interior": "black & white",
-  "cover_finish": "matte",
   "low_content_book": false,
   "page_count": 104,
   "cover_size_in": [
@@ -31,6 +31,7 @@
   "price_usd": 9.99,
   "est_print_cost_usd": 2.84,
   "est_royalty_usd": 3.15,
+  "cover_finish": "matte",
   "ai_disclosure": {
     "images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
     "text": "AI-generated"

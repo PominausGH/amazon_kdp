@@ -1,0 +1,6 @@
+{
+  "extends": "christmas-activity-4-8",
+  "binding": "hardcover",
+  "trim": "8.25x11",
+  "price_usd": 16.99
+}

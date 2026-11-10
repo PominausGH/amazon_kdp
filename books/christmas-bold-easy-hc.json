@@ -1,0 +1,6 @@
+{
+  "extends": "christmas-bold-easy",
+  "binding": "hardcover",
+  "trim": "8.25x11",
+  "price_usd": 16.99
+}

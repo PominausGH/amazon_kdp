@@ -34,7 +34,10 @@ def check(book_dir: Path) -> list[str]:
     if i["bytes"] > 650e6:
         errs.append("interior over 650MB")
     c = pdfinfo(book_dir / "cover.pdf")
-    cw, ch = specs.cover_size(listing["trim"], i["pages"])
+    binding = listing.get("binding", "paperback")
+    if binding == "hardcover" and i["pages"] < specs.HC_MIN_PAGES:
+        errs.append(f"hardcover needs {specs.HC_MIN_PAGES}+ pages")
+    cw, ch = specs.cover_size(listing["trim"], i["pages"], binding)
     if c["pages"] != 1 or abs(c["w_in"] - cw) > .01 or abs(c["h_in"] - ch) > .01:
         errs.append(f"cover {c['w_in']:.4f}x{c['h_in']:.4f} != expected {cw:.4f}x{ch:.4f}")
     if len(listing["keywords"]) > 7:
@@ -44,15 +47,15 @@ def check(book_dir: Path) -> list[str]:
     if len(listing["title"]) + len(listing.get("subtitle", "")) > 200:
         errs.append("title+subtitle over 200 chars")
     if i["pages"] >= specs.MIN_PAGES_SPINE_TEXT:
-        errs += spine_clearance(book_dir / "cover.pdf", listing["trim"], i["pages"])
+        errs += spine_clearance(book_dir / "cover.pdf", listing["trim"], i["pages"], binding)
     return errs
 
 
-def spine_clearance(cover: Path, trim: str, pages: int, dpi=600) -> list[str]:
+def spine_clearance(cover: Path, trim: str, pages: int, binding: str = "paperback", dpi=600) -> list[str]:
     """KDP rejects spine text closer than 0.0625" to a spine edge (Christmas book, 2026-11-05).
     Render just the spine and require the edge strips to hold no light (text) pixels."""
-    tw, _ = specs.TRIMS[trim]
-    x0, w = specs.COVER_BLEED + tw, specs.spine_width(pages)
+    g = specs.cover_geom(trim, pages, binding)
+    x0, w = g["edge"] + g["panel_w"], g["spine"]
     pgm = subprocess.run(["pdftoppm", "-gray", "-r", str(dpi), "-singlefile",
                           "-x", str(round(x0 * dpi)), "-y", str(2 * dpi),
                           "-W", str(round(w * dpi)), "-H", str(7 * dpi), str(cover)],  # no output root -> stdout

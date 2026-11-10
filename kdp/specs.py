@@ -21,7 +21,19 @@ TRIMS = {
     "8x10": (8.0, 10.0),
     "8.5x8.5": (8.5, 8.5),
     "6x9": (6.0, 9.0),
+    "8.25x11": (8.25, 11.0),  # hardcover's nearest size to 8.5x11
 }
+
+# ---------- hardcover (case laminate) ----------
+# From KDP's Cover Calculator (hardcover, B&W, white paper, 8.25x11), read 2026-11-10.
+HC_WRAP = 0.591          # wraps round the board on every outer edge
+HC_HINGE = 0.394         # fold zone beside the spine on each panel: keep content out
+HC_MARGIN = 0.125        # content margin inside each panel
+HC_BARCODE_MARGIN = (0.25, 0.375)
+HC_PANEL = {"8.25x11": (8.447, 11.236)}   # board is larger than the trim
+# Hardcover spine comes from a KDP table, not a formula: only use measured values.
+HC_SPINE = {"8.25x11": {104: 0.423, 114: 0.446}}
+HC_MIN_PAGES = 75
 
 
 def inside_margin(page_count: int) -> float:
@@ -47,9 +59,24 @@ def spine_width(page_count: int) -> float:
     return page_count * SPINE_PER_PAGE_WHITE
 
 
-def cover_size(trim: str, page_count: int) -> tuple[float, float]:
-    w, h = TRIMS[trim]
-    return (2 * w + spine_width(page_count) + 2 * COVER_BLEED, h + 2 * COVER_BLEED)
+def cover_geom(trim: str, page_count: int, binding: str = "paperback") -> dict:
+    """Cover layout in inches: outer edge (bleed or wrap), panel size, spine, hinge, full size."""
+    if binding == "hardcover":
+        if page_count not in HC_SPINE.get(trim, {}):
+            raise SystemExit(f"no measured hardcover spine for {trim} / {page_count} pages: "
+                             "read it from https://kdp.amazon.com/en_US/cover-calculator and add to HC_SPINE")
+        pw, ph = HC_PANEL[trim]
+        edge, spine, hinge = HC_WRAP, HC_SPINE[trim][page_count], HC_HINGE
+    else:
+        pw, ph = TRIMS[trim]
+        edge, spine, hinge = COVER_BLEED, spine_width(page_count), 0.0
+    return {"edge": edge, "panel_w": pw, "panel_h": ph, "spine": spine, "hinge": hinge,
+            "full_w": 2 * edge + 2 * pw + spine, "full_h": 2 * edge + ph}
+
+
+def cover_size(trim: str, page_count: int, binding: str = "paperback") -> tuple[float, float]:
+    g = cover_geom(trim, page_count, binding)
+    return (g["full_w"], g["full_h"])
 
 
 def print_cost_usd(page_count: int) -> float:
@@ -61,7 +88,16 @@ def print_cost_usd(page_count: int) -> float:
     return 1.00 + 0.017 * page_count
 
 
-def royalty_usd(list_price: float, page_count: int) -> float:
-    """Since 10 Jun 2025: 50% below $9.99, 60% at $9.99+ (Amazon.com)."""
+def hc_print_cost_usd(page_count: int) -> float:
+    """Amazon.com B&W hardcover, ESTIMATE from third-party guides (2026-11): 75-108 pages flat $6.80,
+    else $5.65 + $0.017/page for large trims. KDP's pricing page shows the real figure."""
+    if page_count <= 108:
+        return 6.80
+    return 5.65 + 0.017 * page_count
+
+
+def royalty_usd(list_price: float, page_count: int, binding: str = "paperback") -> float:
+    """Since 10 Jun 2025: 50% below $9.99, 60% at $9.99+ (Amazon.com). Same tiers for hardcover."""
     rate = 0.60 if list_price >= 9.99 else 0.50
-    return round(rate * list_price - print_cost_usd(page_count), 2)
+    cost = hc_print_cost_usd(page_count) if binding == "hardcover" else print_cost_usd(page_count)
+    return round(rate * list_price - cost, 2)
