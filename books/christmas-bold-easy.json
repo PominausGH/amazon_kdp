@@ -7,7 +7,7 @@
   ],
   "subtitle": "50 Big, Simple Holiday Pictures for Toddlers & Kids Ages 2-5",
   "badge": "AGES\n2-5",
-  "cover_tagline": "Thick lines · Big shapes · One picture per page",
+  "cover_tagline": "Thick lines \u00b7 Big shapes \u00b7 One picture per page",
   "cover_accent": "#e63946",
   "cover_bg": "#f1faee",
   "back_heading": "Merry Christmas, little artist!",
@@ -222,6 +222,11 @@
           "label": "CHRISTMAS MORNING",
           "subject": "a child happily opening a big present"
         }
+      ],
+      "coloured_samples": [
+        6,
+        22,
+        12
       ]
     }
   ],
@@ -289,5 +294,11 @@
   ],
   "cover_prompt": "A cosy, joyful Christmas scene for toddlers: a smiling snowman with a red scarf, a decorated Christmas tree with a gold star, a cute reindeer with a red nose, a smiling gingerbread man, wrapped presents and candy canes, soft falling snow, rounded snowy hills.",
   "cover_art": "art/christmas-bold-easy/option-1.png",
-  "page_background": "a simple ground line or a few simple snowflakes/stars"
+  "page_background": "a simple ground line or a few simple snowflakes/stars",
+  "back_sub": "50 big, bold Christmas pictures for little hands",
+  "back_points": [
+    "Thick lines and big shapes for ages 2-5",
+    "One picture per page, blank backs",
+    "Santa, reindeer, snowmen, presents and more"
+  ]
 }

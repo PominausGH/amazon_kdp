@@ -6,7 +6,7 @@
   ],
   "subtitle": "Trucks, Diggers, Garbage Trucks, Tractors & More: 50 Big Simple Pictures for Ages 1-4",
   "badge": "AGES\n1-4",
-  "cover_tagline": "Bold & Easy · Thick lines for little hands",
+  "cover_tagline": "Bold & Easy \u00b7 Thick lines for little hands",
   "cover_accent": "#4d96ff",
   "cover_bg": "#fff8e1",
   "back_heading": "Vroom! Let's colour!",
@@ -220,6 +220,11 @@
           "label": "CONSTRUCTION SITE",
           "subject": "a simple construction site with a crane, a digger and traffic cones"
         }
+      ],
+      "coloured_samples": [
+        1,
+        32,
+        35
       ]
     }
   ],
@@ -292,5 +297,11 @@
   ],
   "cover_prompt": "A happy, busy scene of cute rounded toddler-style vehicles: a yellow dump truck, a yellow digger, a green garbage truck, a red fire truck and a blue bus on a simple curvy road, green rolling hills, a few fluffy clouds.",
   "cover_art": "art/things-that-go/option-2.png",
-  "page_background": "a simple road or ground line and one or two small clouds"
+  "page_background": "a simple road or ground line and one or two small clouds",
+  "back_sub": "50 big, bold vehicles for little hands",
+  "back_points": [
+    "Thick lines and big shapes for ages 1-4",
+    "One picture per page, blank backs",
+    "Diggers, trucks, trains, planes and more"
+  ]
 }

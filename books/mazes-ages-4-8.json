@@ -6,7 +6,7 @@
   ],
   "subtitle": "60 Fun Mazes from Easy to Tricky, with Answers",
   "badge": "AGES\n4-8",
-  "cover_tagline": "Easy → Medium → Tricky · Answers included",
+  "cover_tagline": "Easy \u2192 Medium \u2192 Tricky \u00b7 Answers included",
   "cover_accent": "#55c271",
   "cover_bg": "#eef9ff",
   "back_heading": "Can you find the way out?",
@@ -66,5 +66,11 @@
   },
   "cover_subtitle": "60 Fun Mazes from Easy to Tricky, with Answers",
   "cover_prompt": "A playful adventure scene: a cute cartoon kid explorer with a backpack and a magnifying glass at the entrance of a colourful hedge maze seen from above at an angle, a friendly puppy, flowers, and a treasure chest at the maze centre.",
-  "cover_art": "art/mazes-ages-4-8/option-3.png"
+  "cover_art": "art/mazes-ages-4-8/option-3.png",
+  "back_sub": "60 mazes that grow with your child",
+  "back_points": [
+    "20 easy, 20 medium, 20 tricky",
+    "Big, clear paths for pencils and crayons",
+    "Every answer at the back"
+  ]
 }

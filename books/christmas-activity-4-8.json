@@ -523,5 +523,11 @@
   },
   "cover_prompt": "A fun Christmas puzzle-time scene: a smiling penguin and a snowman holding a big pencil next to a small hedge maze, a decorated Christmas tree, presents, stars and snowflakes, cheerful and playful.",
   "cover_art": "art/christmas-activity-4-8/option-2.png",
-  "inner_subtitle": "Word Search, Dot to Dot, Picture Sudoku, Mazes and Coloring: 92 Holiday Activities with Answers"
+  "inner_subtitle": "Word Search, Dot to Dot, Picture Sudoku, Mazes and Coloring: 92 Holiday Activities with Answers",
+  "back_sub": "92 holiday activities for ages 4-8",
+  "back_points": [
+    "Word search, dot to dot, picture sudoku",
+    "20 mazes and 24 big coloring pages",
+    "Every answer at the back"
+  ]
 }

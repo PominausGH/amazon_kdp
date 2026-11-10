@@ -14,7 +14,9 @@ class WordSearch:
     def __init__(self, words: list[str], size: int, rng: random.Random, diagonal=False, tries=400):
         self.size = size
         self.dirs = OLDER_DIRS if diagonal else KIDS_DIRS
-        words = sorted({w.upper().replace(" ", "") for w in words}, key=len, reverse=True)
+        # tie-break alphabetically: set order changes per process (hash randomisation), which made
+        # every build of a word-search book different
+        words = sorted({w.upper().replace(" ", "") for w in words}, key=lambda w: (-len(w), w))
         for attempt in range(tries):
             grid = [[""] * size for _ in range(size)]
             placed = {}

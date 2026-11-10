@@ -42,6 +42,7 @@ class Builder:
         self.solutions: list[tuple[str, callable]] = []  # deferred solution drawers
         self.cover_art: list[str] = []  # coloured snippets in a 400x400 box for the cover
         self.colour_samples: list[Page] = []  # coloured-in copies of colouring pages (previews only)
+        self.colour_src: list[Page] = []  # the black & white originals of those copies
 
     def new(self) -> Page:
         p = Page(self.w_in, self.h_in)
@@ -135,6 +136,7 @@ class Builder:
                 if labelled:
                     outlined_label(cp, cp.w / 2, y + h - 18, label, 54 if len(label) < 11 else 42 if len(label) < 15 else 34)
                 self.colour_samples.append(cp)
+                self.colour_src.append(p)
             if s.get("single_sided", True):
                 self.blank_back()
         if missing:
@@ -243,8 +245,11 @@ class Builder:
 
     def build_interior(self):
         self.front_matter()
+        self.section_pages = []
         for s in self.cfg["sections"]:
+            start = len(self.pages)
             getattr(self, f"section_{s['type']}")(s)
+            self.section_pages.append([pg for pg in self.pages[start:] if len(pg.parts) > 1])
         self.solution_pages()
         while len(self.pages) < specs.MIN_PAGES or len(self.pages) % 2:
             self.new()
@@ -266,6 +271,39 @@ class Builder:
             # show a finished, coloured-in page at each end and a puzzle in the middle
             picks = [self.colour_samples[0], content[0], self.colour_samples[-1]] + picks[3:k]
         return picks
+
+    def showcase_pages(self, k: int = 6) -> list[Page]:
+        """Back-cover showcase: coloured-in examples plus one page from each activity section,
+        topped up with pages spread across the book."""
+        picks = list(self.colour_samples[:3])
+        secs = [[pg for pg in sp if pg not in self.colour_src] for sp in getattr(self, "section_pages", [])]
+        secs = [sp for sp in secs if sp]
+        if self.colour_samples and len(secs) > 1:
+            # the coloured samples already show the colouring section: give its slots to the puzzles
+            coloured_sec = [sp for sp, full in zip(secs, [x for x in self.section_pages if x])
+                            if any(pg in self.colour_src for pg in full)]
+            secs = [sp for sp in secs if sp not in coloured_sec] or secs
+        # round-robin over sections; within a section, take evenly spaced pages (easy -> hard)
+        need = k - len(picks)
+        per = -(-need // max(1, len(secs))) if secs else 0
+        queues = [[sp[round(j * (len(sp) - 1) / max(1, per - 1))] if per > 1 else sp[0]
+                   for j in range(min(per, len(sp)))] for sp in secs]
+        while len(picks) < k and any(queues):
+            for q in queues:
+                if q and len(picks) < k:
+                    pg = q.pop(0)
+                    if pg not in picks:
+                        picks.append(pg)
+        if self.colour_samples and len(picks) >= 4:
+            # alternate colour and black & white so the grid looks lively
+            col = [pg for pg in picks if pg in self.colour_samples]
+            bw = [pg for pg in picks if pg not in self.colour_samples]
+            mixed = []
+            while col or bw:
+                if col: mixed.append(col.pop(0))
+                if bw: mixed.append(bw.pop(0))
+            picks = mixed
+        return picks[:k]
 
     def _front_vector(self, p, c, front_x, fw, fh, bleed, safe, accent):
         # title band
@@ -345,22 +383,36 @@ class Builder:
             self._front_vector(p, c, front_x, fw, fh, bleed, safe, accent)
         # back
         p.add(f'<rect x="0" y="0" width="{spine_x:.1f}" height="{chh * P:.1f}" fill="{c.get("back_bg", "#fff")}"/>')
-        by = bleed + safe + 50
-        p.text(back_x + fw / 2, by, c.get("back_heading", c["title"]), size=26, fill="#222")
-        by += 40
-        for para in c.get("back_text", []):
-            for line in _wrap(para, 52):
-                p.text(back_x + safe + 20, by, line, size=15, weight="normal", anchor="start", fill="#222")
-                by += 22
-            by += 12
-        samples = self.sample_pages(3)
-        if samples:
-            p.text(back_x + fw / 2, by + 24, "Peek inside:", size=18, fill="#222")
-            tw = (fw - 2 * safe - 40) / 3
-            for k, sp in enumerate(samples):
-                p.add(page_thumb(sp, back_x + safe + k * (tw + 20), by + 40, tw))
-        # barcode keep-clear area (KDP prints it here)
         bw, bh = specs.BARCODE_BOX[0] * P, specs.BARCODE_BOX[1] * P
+        # Showcase back: big real pages are the listing's 2nd image on Amazon, so they sell the book.
+        top = bleed + safe
+        p.add(f'<rect x="0" y="0" width="{spine_x:.1f}" height="{top + 92:.1f}" fill="{accent}"/>')
+        head = c.get("back_heading", c["title"])
+        hs = min(34, (fw - 2 * safe) / (len(head) * .58))
+        p.text(back_x + fw / 2, top + 42, head, size=hs, fill="#fff",
+               extra='stroke="#000" stroke-width="3" paint-order="stroke" stroke-linejoin="round"')
+        p.text(back_x + fw / 2, top + 74, c.get("back_sub", c.get("cover_tagline", "")), size=17, fill="#fff")
+        shots = self.showcase_pages(6)
+        if shots:
+            cols, gap = 3, 16
+            tw = (fw - 2 * safe - (cols - 1) * gap) / cols
+            th = tw * self.h_in / self.w_in
+            gy = top + 112
+            for k, sp in enumerate(shots):
+                tx = back_x + safe + (k % cols) * (tw + gap)
+                ty = gy + (k // cols) * (th + gap)
+                p.add(page_thumb(sp, tx, ty, tw))
+            by = gy + ((len(shots) + cols - 1) // cols) * (th + gap) + 14
+        else:
+            by = top + 130
+        # short selling points, left of the barcode box
+        for pt in c.get("back_points", []):
+            p.add(f'<circle cx="{back_x + safe + 8:.1f}" cy="{by - 5:.1f}" r="5" fill="{accent}" stroke="#000" stroke-width="1.2"/>')
+            p.text(back_x + safe + 22, by, pt, size=15, anchor="start", fill="#222")
+            by += 24
+        assert by - 24 < bleed + fh - safe - bh - 4 or not c.get("back_points") or \
+            back_x + safe + 22 + 15 * .55 * max(map(len, c["back_points"])) < spine_x - safe - bw, "back text hits barcode"
+        # barcode keep-clear area (KDP prints it here)
         p.add(f'<rect x="{spine_x - safe - bw:.1f}" y="{bleed + fh - safe - bh:.1f}" width="{bw:.1f}" height="{bh:.1f}" fill="#fff"/>')
         # spine
         p.add(f'<rect x="{spine_x:.1f}" y="0" width="{spine:.1f}" height="{chh * P:.1f}" fill="{accent}"/>')
