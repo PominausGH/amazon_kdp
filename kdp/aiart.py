@@ -12,7 +12,9 @@ import argparse
 import base64
 import json
 import os
+import subprocess
 import sys
+import tempfile
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -94,8 +96,33 @@ def generate_openrouter(key: str, prompt: str, aspect: str, size: str | None = N
     raise GeminiError(last or "no OpenRouter model available")
 
 
+AGY_MODEL = os.environ.get("KDP_AGY_MODEL", "gemini-3.8-flash-low")
+
+
+def generate_agy(prompt: str, aspect: str, timeout=300) -> tuple[bytes, str]:
+    """Free: the local Antigravity CLI (`agy`, signed in with the user's Google account)
+    generates the image with its own image tool and saves it to a temp dir. ~1024px output."""
+    with tempfile.TemporaryDirectory(prefix="kdp-agy-") as tmp:
+        out = Path(tmp) / "image.png"
+        ask = (f"Use your image generation tool to create this image (aspect ratio {aspect}). "
+               f"Save it as {out}. Reply with only the saved path.\n\nImage description:\n{prompt}")
+        try:
+            r = subprocess.run(["agy", "--model", AGY_MODEL, "--add-dir", tmp, "--print-timeout", f"{timeout}s",
+                                f"-p={ask}"], capture_output=True, text=True, timeout=timeout + 30, cwd=tmp)
+        except subprocess.TimeoutExpired as e:
+            raise GeminiError(f"agy: timed out after {timeout}s") from e
+        if not out.exists():
+            pngs = sorted(Path(tmp).rglob("*.png"))  # it sometimes picks its own filename
+            if not pngs:
+                raise GeminiError(f"agy: no image saved (exit {r.returncode}): {(r.stdout + r.stderr)[-300:]}")
+            out = pngs[0]
+        return out.read_bytes(), f"agy:{AGY_MODEL}"
+
+
 def generate(prompt: str, aspect="3:4", size=None) -> tuple[bytes, str]:
-    """OpenRouter if its key is set, otherwise Gemini direct."""
+    """KDP_IMAGE_BACKEND=agy: free local Antigravity. Otherwise OpenRouter if its key is set, else Gemini direct."""
+    if os.environ.get("KDP_IMAGE_BACKEND") == "agy":
+        return generate_agy(prompt, aspect)
     ork = openrouter_key()
     if ork:
         return generate_openrouter(ork, prompt, aspect, size)

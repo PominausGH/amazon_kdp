@@ -1,10 +1,14 @@
-"""Small OpenRouter chat client for planning (text) and page review (vision)."""
+"""Chat client for planning (text) and page review (vision): local `claude` CLI by default,
+OpenRouter when KDP_LLM_BACKEND=openrouter (e.g. on the VPS, where there is no claude CLI)."""
 from __future__ import annotations
 
 import base64
 import json
+import os
 import re
+import shutil
 import subprocess
+import tempfile
 import time
 import urllib.error
 import urllib.request
@@ -15,6 +19,9 @@ from .aiart import GeminiError, openrouter_key
 API = "https://openrouter.ai/api/v1/chat/completions"
 PLANNER = "anthropic/claude-sonnet-5.5"
 REVIEWER = "anthropic/claude-haiku-5.5"
+# "local" = the `claude` CLI on this machine (subscription, free per call); "openrouter" = paid API.
+# Image generation (aiart.py) always uses OpenRouter/Gemini: Claude can't draw.
+BACKEND = os.environ.get("KDP_LLM_BACKEND", "local" if shutil.which("claude") else "openrouter")
 
 
 class LLMError(RuntimeError):
@@ -35,8 +42,52 @@ def image_part(path: Path, max_px=640) -> dict:
     return {"type": "image_url", "image_url": {"url": "data:image/png;base64," + base64.b64encode(png).decode()}}
 
 
+def _local_model(model: str) -> str:
+    for alias in ("haiku", "sonnet", "opus"):
+        if alias in model:
+            return alias
+    return "sonnet"
+
+
+def chat_local(messages: list, model: str, timeout=600) -> str:
+    """Run the prompt through the local `claude` CLI (the user's subscription, no OpenRouter cost).
+    Images are written to a temp dir and read by Claude with the Read tool."""
+    with tempfile.TemporaryDirectory(prefix="kdp-llm-") as tmp:
+        parts, n = [], 0
+        for m in messages:
+            content = m["content"]
+            if isinstance(content, str):
+                parts.append(content)
+                continue
+            for c in content:
+                if c.get("type") == "text":
+                    parts.append(c["text"])
+                elif c.get("type") == "image_url":
+                    n += 1
+                    f = Path(tmp) / f"image-{n}.png"
+                    f.write_bytes(base64.b64decode(c["image_url"]["url"].split(",", 1)[1]))
+                    parts.append(f"[Image {n}: use the Read tool to view {f}]")
+        prompt = "\n\n".join(parts)
+        if n:
+            prompt = (f"First use the Read tool to view all {n} image file(s) listed below, then answer. "
+                      "Your final message must be the answer only.\n\n" + prompt)
+        cmd = ["claude", "-p", "--model", _local_model(model), "--output-format", "text",
+               "--no-session-persistence", "--tools", "Read" if n else "", "--add-dir", tmp]
+        if n:
+            cmd += ["--allowedTools", "Read"]
+        try:
+            r = subprocess.run(cmd, input=prompt, capture_output=True, text=True, timeout=timeout, cwd=tmp)
+        except subprocess.TimeoutExpired as e:
+            raise LLMError(f"local claude ({model}): timed out after {timeout}s") from e
+        if r.returncode != 0:
+            raise LLMError(f"local claude ({model}): exit {r.returncode}: {(r.stderr or r.stdout)[:300]}")
+        return r.stdout.strip()
+
+
 def chat(messages: list, model: str, max_tokens=4000, temperature=0.7) -> str:
-    body = {"model": model, "messages": messages, "max_tokens": max_tokens, "temperature": temperature}
+    if BACKEND == "local":
+        return chat_local(messages, model)
+    body ={"model": model, "messages": messages, "max_tokens": max_tokens, "temperature": temperature}
     req = urllib.request.Request(API, data=json.dumps(body).encode(), headers={
         "Content-Type": "application/json", "Authorization": f"Bearer {_key()}", "X-Title": "amazon_kdp"})
     try:

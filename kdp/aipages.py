@@ -65,7 +65,8 @@ def page_path(book_slug: str, idx: int, subject: str) -> Path:
 
 def clean_bw(raw: Path, out: Path):
     """Greyscale -> hard threshold -> pure 1-bit black/white, trimmed with margin."""
-    subprocess.run(["magick", str(raw), "-colorspace", "gray", "-threshold", "55%",
+    # Enlarge small (~1K, e.g. agy) images before thresholding so print lines stay smooth; no-op for 2K+.
+    subprocess.run(["magick", str(raw), "-colorspace", "gray", "-resize", "2048x2048<", "-threshold", "55%",
                     "-bordercolor", "white", "-border", "1", "-trim", "+repage",
                     "-bordercolor", "white", "-border", "20", "-type", "bilevel", str(out)], check=True)
 
