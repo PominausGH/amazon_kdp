@@ -63,6 +63,10 @@ def approved(slug: str) -> set[str]:
 
 def build(slug: str) -> bool:
     recipe = ROOT / "books" / f"{slug}.json"
+    if not recipe.exists():
+        brief = next(b for b in json.loads(weekly.QUEUE.read_text())["books"] if b["slug"] == slug)
+        log(f"{slug}: planning with local Claude")
+        recipe.write_text(json.dumps(plan.plan(brief), indent=2, ensure_ascii=False))
     cfg = json.loads(recipe.read_text())
     ages = cfg.get("reading_age", "2-5")
     style = cfg["sections"][0].get("style", "toddler")

@@ -1,0 +1,260 @@
+{
+  "title": "Christmas Unicorn Bold & Easy Coloring Book for Kids",
+  "title_lines": [
+    "Christmas",
+    "Unicorns",
+    "Coloring Book"
+  ],
+  "subtitle": "50 Big, Simple Holiday Unicorn Pictures for Toddlers & Kids Ages 3-6",
+  "cover_subtitle": "50 Big & Easy Pictures for Ages 3-6",
+  "badge": "AGES\n3-6",
+  "cover_tagline": "Bold lines, big fun, merry unicorns!",
+  "cover_accent": "#D6336C",
+  "cover_bg": "#FFF4F8",
+  "back_heading": "Merry Unicorn Magic!",
+  "back_text": [
+    "Meet 50 friendly Christmas unicorns and their festive friends! Every page has one big, simple picture with thick bold lines, perfect for little hands learning to colour.",
+    "From unicorns in Santa hats to sleigh rides, gingerbread, snowmen and hot cocoa, there is something to colour on every page. Each picture sits on its own page with a blank back, so markers won't bleed through.",
+    "A sweet, screen-free gift for Christmas morning, stocking stuffers or long holiday afternoons."
+  ],
+  "page_background": "a few small snowflakes, a simple snowy ground line, or a small star or two; keep backgrounds minimal and uncluttered",
+  "keywords": [
+    "christmas unicorn coloring book for kids",
+    "unicorn coloring book for toddlers 3-6",
+    "bold and easy unicorn coloring pages",
+    "christmas coloring book for girls ages 3-5",
+    "stocking stuffers for girls toddlers",
+    "big simple coloring book thick lines",
+    "preschool christmas activity book girls"
+  ],
+  "categories": [
+    "Books > Children's Books > Activities, Crafts & Games > Coloring Books",
+    "Books > Children's Books > Holidays & Celebrations > Christmas"
+  ],
+  "description_html": "<p><b>Big, bold, friendly Christmas unicorns for little hands to colour!</b></p><ul><li>50 pictures, each on its own page with a blank back (no marker bleed-through)</li><li>Thick bold lines and big simple shapes, perfect for ages 3-6</li><li>Unicorns in Santa hats, pulling a sleigh and decorating the tree, plus gingerbread, snowmen, presents, stockings and hot cocoa</li><li>One big, easy subject per page, with no tiny details to frustrate beginners</li><li>Large 8.5 x 11 inch pages</li></ul><p>A magical stocking stuffer or Christmas gift for any little unicorn lover.</p>",
+  "cover_prompt": "A bright, cheerful Christmas scene for kids: a smiling cute unicorn in a red Santa hat and striped scarf with a rainbow mane, standing beside a decorated Christmas tree with a gold star, a smiling gingerbread man, a happy snowman with a carrot nose, a stack of wrapped presents with big bows, and candy canes, soft falling snow and rounded snowy hills.",
+  "reading_age": "3-6",
+  "aplus_heading": "Merry Unicorn Colouring Fun",
+  "aplus_caption": "Bold, easy pages for little Christmas unicorn fans",
+  "seed": 35985,
+  "sections": [
+    {
+      "type": "ai_pages",
+      "single_sided": true,
+      "style": "toddler",
+      "pages": [
+        {
+          "label": "SANTA UNICORN",
+          "subject": "a cute smiling unicorn standing and wearing a big fluffy Santa hat, with a swirly horn and a long flowing mane"
+        },
+        {
+          "label": "SCARF UNICORN",
+          "subject": "a happy unicorn wearing a big chunky striped scarf wrapped around its neck, with a small horn and a star on its cheek"
+        },
+        {
+          "label": "TREE UNICORN",
+          "subject": "a friendly unicorn hanging a round bauble on a big Christmas tree with its nose"
+        },
+        {
+          "label": "SLEIGH UNICORN",
+          "subject": "a smiling unicorn pulling a big simple sleigh with a few presents in it"
+        },
+        {
+          "label": "GIFT HUGGER",
+          "subject": "a cute unicorn hugging a stack of three big wrapped presents with big bows, one with polka dots and one with stripes"
+        },
+        {
+          "label": "STOCKING PEEK",
+          "subject": "a cute unicorn peeking into one large Christmas stocking with a fluffy cuff, a small candy cane and a toy star poking out of the top"
+        },
+        {
+          "label": "COOKIE FRIEND",
+          "subject": "a cute unicorn holding hands with a smiling gingerbread man with icing buttons and a big round head"
+        },
+        {
+          "label": "SNOWMAN HUG",
+          "subject": "a cute unicorn hugging a big happy snowman with a round hat, scarf, carrot nose and three big stacked snowballs"
+        },
+        {
+          "label": "CANDY CLIMB",
+          "subject": "a cute unicorn licking one huge chunky candy cane with a big bow"
+        },
+        {
+          "label": "SLEDDING UNICORN",
+          "subject": "a cheerful unicorn sitting on a simple sled sliding down a small snowy hill"
+        },
+        {
+          "label": "COOKIE BAKING",
+          "subject": "a cute unicorn wearing a chef hat holding a rolling pin over a big star-shaped cookie"
+        },
+        {
+          "label": "COCOA SIP",
+          "subject": "a cute unicorn sipping from a big round mug of hot cocoa with steam swirls, a big marshmallow and a candy cane stirring stick"
+        },
+        {
+          "label": "BABY UNICORN",
+          "subject": "a tiny baby unicorn foal with big eyes and wobbly legs wearing a little Santa hat"
+        },
+        {
+          "label": "TREE STAR",
+          "subject": "a cute unicorn gazing up at one big simple Christmas tree with a star on top, big round baubles and a few presents underneath"
+        },
+        {
+          "label": "HAT PEEKABOO",
+          "subject": "a cute unicorn peeking out from behind one big fluffy Santa hat with a pom-pom"
+        },
+        {
+          "label": "DEER BUDDY",
+          "subject": "a cute unicorn nuzzling noses with a cute baby reindeer with big antlers, a round nose and a jingle bell collar"
+        },
+        {
+          "label": "WREATH JUMP",
+          "subject": "a cute unicorn jumping through a big round Christmas wreath with big holly leaves, berries and a big bow"
+        },
+        {
+          "label": "SNOWFLAKE CATCH",
+          "subject": "a cute unicorn catching one very big simple snowflake with six thick arms on its horn"
+        },
+        {
+          "label": "CANDY HOUSE",
+          "subject": "a cute unicorn sniffing a cute gingerbread house with a candy-covered roof, round gumdrops, a swirly lollipop and a big door"
+        },
+        {
+          "label": "MITTEN MAGIC",
+          "subject": "a cute unicorn wearing a pair of big chunky mittens with a snowflake pattern and fluffy cuffs, waving"
+        },
+        {
+          "label": "SNOW GLOBE",
+          "subject": "a big round snow globe with a small unicorn inside and falling snow, on a simple base"
+        },
+        {
+          "label": "STAR WISH",
+          "subject": "a cute unicorn making a wish while looking up at one big smiling five-pointed Christmas star with a tiny twinkle on each side"
+        },
+        {
+          "label": "BAUBLE BOUNCE",
+          "subject": "a cute unicorn balancing one big round Christmas bauble with a swirly stripe pattern on its nose"
+        },
+        {
+          "label": "BELL RINGER",
+          "subject": "a cute unicorn ringing two big jingle bells tied together with a big bow and holly leaves"
+        },
+        {
+          "label": "ANGEL UNICORN",
+          "subject": "a gentle unicorn with fluffy angel wings and a little halo, sitting on a soft cloud"
+        },
+        {
+          "label": "SKATING UNICORN",
+          "subject": "a happy unicorn gliding on ice skates, with one leg lifted and a scarf blowing behind"
+        },
+        {
+          "label": "SNOW SLIDE",
+          "subject": "a cute smiling unicorn sliding down a small snowy hill on its tummy, with a few big snowflakes above"
+        },
+        {
+          "label": "PENGUIN PAL",
+          "subject": "a cute unicorn hugging a cute round penguin wearing a Santa hat and a scarf"
+        },
+        {
+          "label": "BEAR CUDDLE",
+          "subject": "a cute unicorn cuddling a friendly round polar bear cub wearing a big scarf, sitting in the snow"
+        },
+        {
+          "label": "OWL VISIT",
+          "subject": "a cute unicorn waving at a fluffy round owl with big eyes sitting on a branch wearing a tiny Santa hat"
+        },
+        {
+          "label": "BUNNY GIFT",
+          "subject": "a cute unicorn giving a small present to a cute bunny with long ears wearing a woolly hat"
+        },
+        {
+          "label": "PUPPY PLAY",
+          "subject": "a cute unicorn petting a cute puppy wearing a reindeer antler headband and sitting beside a big present"
+        },
+        {
+          "label": "KITTEN TOSS",
+          "subject": "a cute unicorn playing with a fluffy kitten batting at a big round bauble hanging from a ribbon"
+        },
+        {
+          "label": "SOCK HANGER",
+          "subject": "a cute unicorn hanging up a pair of big cozy Christmas socks with stripes and stars, side by side"
+        },
+        {
+          "label": "CANDLE GLOW",
+          "subject": "a cute unicorn smiling at one big round candle with a simple flame and holly leaves around the base"
+        },
+        {
+          "label": "COOKIE MUNCH",
+          "subject": "a cute unicorn nibbling a star cookie from a big round plate with three large cookies: a star, a tree and a smiling round one"
+        },
+        {
+          "label": "CUPCAKE TREAT",
+          "subject": "a cute unicorn holding one big Christmas cupcake with swirly frosting, sprinkles and a star on top"
+        },
+        {
+          "label": "ELF HELPER",
+          "subject": "a cute unicorn high-fiving a friendly little elf with a pointy hat and big boots, who holds a wrapped present"
+        },
+        {
+          "label": "LANTERN CARRY",
+          "subject": "a cute unicorn carrying a big round lantern with a star shape cut-out, a handle and a bow on top"
+        },
+        {
+          "label": "CAROL SINGER",
+          "subject": "a unicorn with its mouth open wide singing happily, wearing a scarf and holding a small bell"
+        },
+        {
+          "label": "GIFT UNICORN",
+          "subject": "a smiling unicorn carrying a big present on its back, tied with a huge bow"
+        },
+        {
+          "label": "COZY FIRE",
+          "subject": "a cute unicorn warming up by a cozy fireplace with a big simple flame and two stockings hanging from the mantel"
+        },
+        {
+          "label": "SNOWBALL FUN",
+          "subject": "a playful unicorn rolling a big snowball with its hooves, with a small snowman beside it"
+        },
+        {
+          "label": "ROOFTOP UNICORN",
+          "subject": "a cute unicorn standing on the snowy roof of a simple little house with a round window and a chimney with smoke"
+        },
+        {
+          "label": "RAINBOW UNICORN",
+          "subject": "a smiling unicorn wearing a Santa hat standing in front of a big simple rainbow arc"
+        },
+        {
+          "label": "FLYING UNICORN",
+          "subject": "a unicorn with wings flying through the sky with a big star, wearing a Santa hat"
+        },
+        {
+          "label": "TEDDY HUG",
+          "subject": "a cute unicorn hugging a cuddly teddy bear wearing a Christmas bow tie and holding a small candy cane"
+        },
+        {
+          "label": "SOLDIER SALUTE",
+          "subject": "a cute unicorn saluting a cheerful toy soldier with a tall hat and big round buttons, standing straight"
+        },
+        {
+          "label": "HOLLY SNIFF",
+          "subject": "a cute unicorn sniffing a big sprig of holly with three large leaves and a cluster of round berries"
+        },
+        {
+          "label": "SLEEPY UNICORN",
+          "subject": "a sleepy unicorn curled up under a blanket wearing a nightcap, with a few stars above"
+        }
+      ]
+    }
+  ],
+  "format": "50-single",
+  "price_usd": 10.99,
+  "ai_disclosure": {
+    "images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
+    "text": "AI-generated (Claude)"
+  },
+  "niche_test": {
+    "niche": "Christmas unicorns, bold and easy: cute friendly unicorns in Santa hats and scarves, a unicorn decorating a Christmas tree, pulling a sleigh, with presents, stockings, gingerbread, snowmen, candy canes, sledding, baking cookies, hot cocoa (100% original characters)",
+    "hypothesis": "Girls' counterpart to Christmas Dinosaurs; Christmas Bold Easy ads converted ~21%",
+    "planned_by": "anthropic/claude-sonnet-5.5"
+  }
+}
