@@ -104,7 +104,9 @@ def generate_agy(prompt: str, aspect: str, timeout=300) -> tuple[bytes, str]:
     generates the image with its own image tool and saves it to a temp dir. ~1024px output."""
     with tempfile.TemporaryDirectory(prefix="kdp-agy-") as tmp:
         out = Path(tmp) / "image.png"
-        ask = (f"Use your image generation tool to create this image (aspect ratio {aspect}). "
+        ask = (f"Use ONLY your built-in image generation tool to create this image (aspect ratio {aspect}). "
+               "Do NOT use any website, web API, download, script or other external service to make or fetch "
+               "an image. If the built-in tool fails or is out of quota, save nothing and reply FAILED. "
                f"Save it as {out}. Reply with only the saved path.\n\nImage description:\n{prompt}")
         try:
             r = subprocess.run(["agy", "--model", AGY_MODEL, "--add-dir", tmp, "--print-timeout", f"{timeout}s",
