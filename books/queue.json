@@ -41,7 +41,7 @@
     },
     {
       "slug": "christmas-dinosaurs-bold-easy",
-      "status": "needs-attention",
+      "status": "building-local",
       "theme": "Christmas dinosaurs, bold and easy: cute friendly dinosaurs in Santa hats, elf hats and scarves; a T-Rex decorating a Christmas tree, a dino pulling Santa's sleigh, dinos with presents, stockings, gingerbread, snowmen, candy canes, building a snow-dino, sledding, baking cookies (100% original characters)",
       "ages": "3-6",
       "format": "50-single",
@@ -50,11 +50,12 @@
     },
     {
       "slug": "aussie-animals-bold-easy",
-      "status": "todo",
+      "status": "building-local",
       "theme": "Australian animals (koala, kangaroo, wombat, platypus, echidna, kookaburra, quokka, emu...) bold and easy",
       "ages": "2-5",
       "why": "Home market; Aussie Cosy books by Mimimoo sell at 4.8-5 stars with little competition",
-      "format": "100-duplex"
+      "format": "100-duplex",
+      "note": "kdp.slowbuild (agy + local claude) started 2026-11-22"
     },
     {
       "slug": "mandalas-relaxing",
