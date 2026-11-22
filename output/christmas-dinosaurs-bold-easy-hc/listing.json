@@ -1,0 +1,44 @@
+{
+  "binding": "hardcover",
+  "title": "Christmas Dinosaurs Bold & Easy Coloring Book for Kids",
+  "subtitle": "50 Big, Simple Dino Pictures with Santa Hats, Presents & Snowmen for Toddlers & Kids Ages 3-6",
+  "author": "Crayon Cove Press",
+  "description_html": "<p><b>Friendly dinosaurs get ready for Christmas in 50 big, simple pictures!</b></p><p>Bold and easy designs with thick outlines and large spaces: perfect first coloring for toddlers and preschoolers.</p><ul><li>50 pictures, each on its own page with a blank back (no marker bleed-through)</li><li>Thick, bold lines and one big subject per page, easy for little hands</li><li>T-Rex decorating the tree, a dino pulling the sleigh, presents, stockings, gingerbread, snowmen, candy canes, sledding and cookie baking</li><li>Cute, friendly, original dinosaurs in Santa hats, elf hats and scarves</li><li>Large 8.5 x 11 inch pages</li></ul><p>A fun stocking stuffer or Christmas gift for dinosaur-loving kids ages 3-6.</p>",
+  "keywords": [
+    "dinosaur christmas coloring book for toddlers",
+    "christmas coloring pages for preschool kids",
+    "stocking stuffers for toddler boys and girls",
+    "easy large print dino coloring book ages 3-5",
+    "christmas activity book for kids 3-6",
+    "thick lines simple coloring book for toddlers",
+    "t-rex santa hat holiday gift for kids"
+  ],
+  "categories": [
+    "Books > Children's Books > Activities, Crafts & Games > Coloring Books",
+    "Books > Children's Books > Holidays & Celebrations > Christmas"
+  ],
+  "reading_age": "3-6",
+  "trim": "8.25x11",
+  "bleed": false,
+  "paper": "white",
+  "interior": "black & white",
+  "low_content_book": false,
+  "page_count": 104,
+  "cover_size_in": [
+    18.499,
+    12.418
+  ],
+  "price_usd": 17.99,
+  "est_print_cost_usd": 7.49,
+  "est_royalty_usd": 3.3,
+  "cover_finish": "case laminate (matte)",
+  "ai_disclosure": {
+    "images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
+    "text": "AI-generated (Claude)"
+  },
+  "niche_test": {
+    "niche": "Christmas dinosaurs, bold and easy: cute friendly dinosaurs in Santa hats, elf hats and scarves; a T-Rex decorating a Christmas tree, a dino pulling Santa's sleigh, dinos with presents, stockings, gingerbread, snowmen, candy canes, building a snow-dino, sledding, baking cookies (100% original characters)",
+    "hypothesis": "Christmas Bold Easy ads converted ~21% (12 orders / 57 clicks); Christmas x dinosaur crossover niche. Must be live by ~Nov 27 for the Dec 15 order cut-off",
+    "planned_by": "anthropic/claude-sonnet-5.5"
+  }
+}
