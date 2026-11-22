@@ -120,12 +120,22 @@ def generate_agy(prompt: str, aspect: str, timeout=300) -> tuple[bytes, str]:
 
 
 def generate(prompt: str, aspect="3:4", size=None) -> tuple[bytes, str]:
-    """KDP_IMAGE_BACKEND=agy: free local Antigravity. Otherwise OpenRouter if its key is set, else Gemini direct."""
-    if os.environ.get("KDP_IMAGE_BACKEND") == "agy":
+    """Default: free local Antigravity (agy). Paid APIs only when explicitly chosen:
+    KDP_IMAGE_BACKEND=openrouter (OpenRouter) or =gemini-api (Gemini direct)."""
+    backend = os.environ.get("KDP_IMAGE_BACKEND", "agy")
+    if backend == "agy":
         return generate_agy(prompt, aspect)
+    if backend == "gemini-api":
+        return generate_gemini_api(prompt, aspect, size)
+    if backend != "openrouter":
+        raise GeminiError(f"unknown KDP_IMAGE_BACKEND={backend!r} (agy | openrouter | gemini-api)")
     ork = openrouter_key()
-    if ork:
-        return generate_openrouter(ork, prompt, aspect, size)
+    if not ork:
+        raise GeminiError("KDP_IMAGE_BACKEND=openrouter but no OPENROUTER_API_KEY")
+    return generate_openrouter(ork, prompt, aspect, size)
+
+
+def generate_gemini_api(prompt: str, aspect: str, size=None) -> tuple[bytes, str]:
     key = api_key()
     last = None
     for model in MODELS:

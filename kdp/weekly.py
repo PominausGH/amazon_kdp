@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import subprocess
 import sys
 import traceback
@@ -141,7 +142,8 @@ def main():
     q = json.loads(QUEUE.read_text())
     books = due_books(q, today, PER_WEEK)
     need = sum(0 if b.get("prebuilt") else COST_PER_BOOK[b.get("format", "50-single")] for b in books)
-    left = credit_remaining()
+    paid = "openrouter" in (os.environ.get("KDP_LLM_BACKEND", "local"), os.environ.get("KDP_IMAGE_BACKEND", "agy"))
+    left = credit_remaining() if paid else None
     log = [f"# KDP weekly build {today}", "",
            f"Books due: {', '.join(b['slug'] for b in books) or 'none'}",
            f"Estimated cost ${need:.2f}; OpenRouter credit left: {'no limit' if left is None else f'${left:.2f}'}", ""]

@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 art/_lowres/
 .playwright-mcp/
+reports/slowbuild.log

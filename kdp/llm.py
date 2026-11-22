@@ -19,9 +19,9 @@ from .aiart import GeminiError, openrouter_key
 API = "https://openrouter.ai/api/v1/chat/completions"
 PLANNER = "anthropic/claude-sonnet-5.5"
 REVIEWER = "anthropic/claude-haiku-5.5"
-# "local" = the `claude` CLI on this machine (subscription, free per call); "openrouter" = paid API.
-# Image generation (aiart.py) always uses OpenRouter/Gemini: Claude can't draw.
-BACKEND = os.environ.get("KDP_LLM_BACKEND", "local" if shutil.which("claude") else "openrouter")
+# "local" (default) = the `claude` CLI on this machine (subscription, free per call).
+# "openrouter" = paid API: only when explicitly set (KDP_LLM_BACKEND=openrouter). Never a silent fallback.
+BACKEND = os.environ.get("KDP_LLM_BACKEND", "local")
 
 
 class LLMError(RuntimeError):
@@ -86,6 +86,8 @@ def chat_local(messages: list, model: str, timeout=600) -> str:
 
 def chat(messages: list, model: str, max_tokens=4000, temperature=0.7) -> str:
     if BACKEND == "local":
+        if not shutil.which("claude"):
+            raise LLMError("local backend: `claude` CLI not found (set KDP_LLM_BACKEND=openrouter to pay instead)")
         return chat_local(messages, model)
     body ={"model": model, "messages": messages, "max_tokens": max_tokens, "temperature": temperature}
     req = urllib.request.Request(API, data=json.dumps(body).encode(), headers={

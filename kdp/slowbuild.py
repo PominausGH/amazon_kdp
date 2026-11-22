@@ -1,6 +1,7 @@
 """Free, unattended build: pages drawn by Antigravity (agy), reviewed by local Claude.
 
     nohup python -m kdp.slowbuild christmas-dinosaurs-bold-easy aussie-animals-bold-easy >> reports/slowbuild.log 2>&1 &
+    python -m kdp.slowbuild --weekly   # resume 'building-local' books, then start the next 2 due 'todo' books
 
 agy's image quota allows only ~10 pictures per ~5 hours, so this loops: draw what it can,
 sleep when the quota is exhausted, carry on. Once every page exists it reviews them,
@@ -23,7 +24,7 @@ from pathlib import Path
 os.environ.setdefault("KDP_IMAGE_BACKEND", "agy")
 os.environ.setdefault("KDP_LLM_BACKEND", "local")
 
-from . import aipages, book, qa, review  # noqa: E402  (env must be set first)
+from . import aipages, book, plan, qa, review, weekly  # noqa: E402  (env must be set first)
 
 ROOT = Path(__file__).resolve().parent.parent
 REDRAW_ROUNDS = 2
@@ -90,24 +91,65 @@ def build(slug: str) -> bool:
         log(f"{slug}: NOT built: {len(rejected)} rejected, {len(errors)} unreviewed pages")
         return False
     if not cfg.get("cover_art"):
-        log(f"{slug}: NOT built: no cover_art in recipe (make one in Antigravity)")
-        return False
+        cover = None
+        while cover is None:
+            try:
+                cover = weekly.make_cover(slug, cfg, notes := [])
+                for n in notes:
+                    log(f"{slug}:{n}")
+            except Exception as e:  # agy quota: options drawn so far are kept on disk
+                log(f"{slug}: cover not done ({str(e)[-150:]}); waiting {WAIT_S // 60} min")
+                time.sleep(WAIT_S)
+                continue
+            if cover is None:
+                log(f"{slug}: NOT built: no acceptable cover option; delete art/{slug}/option-*.png to redraw")
+                return False
+        cfg["cover_art"] = str(cover.relative_to(ROOT))
+        recipe.write_text(json.dumps(cfg, indent=2, ensure_ascii=False))
     out = book.build(recipe)
     errs = qa.check(out)
     log(f"{slug}: built {out.relative_to(ROOT)}; QA {'PASS' if not errs else 'FAIL: ' + '; '.join(errs)}")
     return not errs
 
 
+def set_status(slug: str, status: str):
+    q = json.loads(weekly.QUEUE.read_text())
+    for b in q["books"]:
+        if b["slug"] == slug:
+            b["status"] = status
+            if status == "built":
+                b["built"] = str(dt.date.today())
+    weekly.save_queue(q)
+
+
+def weekly_slugs() -> list[str]:
+    """Books already being built locally, then the next due 'todo' books (planned with local Claude)."""
+    q = json.loads(weekly.QUEUE.read_text())
+    slugs = [b["slug"] for b in q["books"] if b.get("status") == "building-local"]
+    for b in weekly.due_books(q, dt.date.today(), weekly.PER_WEEK):
+        recipe = ROOT / "books" / f"{b['slug']}.json"
+        if not b.get("prebuilt") and not recipe.exists():
+            log(f"{b['slug']}: planning with local Claude")
+            recipe.write_text(json.dumps(plan.plan(b), indent=2, ensure_ascii=False))
+        set_status(b["slug"], "building-local")
+        slugs.append(b["slug"])
+    return slugs
+
+
 def main():
-    slugs = sys.argv[1:]
-    if not slugs:
+    args = sys.argv[1:]
+    if not args:
         sys.exit(__doc__)
+    slugs = weekly_slugs() if args == ["--weekly"] else args
+    log(f"books: {', '.join(slugs) or 'none due'}")
     for slug in slugs:
         log(f"=== {slug} ===")
         try:
-            build(slug)
+            ok = build(slug)
+            set_status(slug, "built" if ok else "needs-attention")
         except Exception as e:  # keep going with the next book
             log(f"{slug}: crashed: {e!r}")
+            set_status(slug, "needs-attention")
     log("all done")
 
 
