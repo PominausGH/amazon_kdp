@@ -52,6 +52,7 @@ class Builder:
 
     def blank_back(self):
         p = self.new()
+        p.blank = True  # showcase_pages must skip these (can't tell by part count: a mandala page is 1 part too)
         p.text(p.w / 2, p.h / 2, "This page is left blank so colours don't bleed through.",
                size=9, weight="normal", fill="#999")
 
@@ -250,7 +251,7 @@ class Builder:
         for s in self.cfg["sections"]:
             start = len(self.pages)
             getattr(self, f"section_{s['type']}")(s)
-            self.section_pages.append([pg for pg in self.pages[start:] if len(pg.parts) > 1])
+            self.section_pages.append([pg for pg in self.pages[start:] if pg.parts and not getattr(pg, "blank", False)])
         self.solution_pages()
         while len(self.pages) < specs.MIN_PAGES or len(self.pages) % 2:
             self.new()
