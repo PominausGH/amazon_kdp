@@ -107,7 +107,7 @@ def plan(brief: dict) -> dict:
             f"Example of the style (a different book, partial):\n{json.dumps(example_view, indent=1)}")},
     ]
     for attempt in range(3):
-        r = chat_json(msgs, PLANNER, max_tokens=8000)
+        r = chat_json(msgs, PLANNER, max_tokens=16000)
         errs = validate(r, n)
         if not errs:
             break

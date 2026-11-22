@@ -5,6 +5,7 @@ import base64
 import json
 import re
 import subprocess
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -49,16 +50,25 @@ def chat(messages: list, model: str, max_tokens=4000, temperature=0.7) -> str:
         raise LLMError(f"{model}: unexpected response {json.dumps(data)[:300]}") from e
 
 
-def chat_json(messages: list, model: str, **kw):
-    """Ask for JSON and parse it, tolerating ```json fences."""
-    text = chat(messages, model, **kw)
-    m = re.search(r"```(?:json)?\s*(.*?)```", text, re.S)
-    raw = m.group(1) if m else text
-    start = min([i for i in (raw.find("{"), raw.find("[")) if i >= 0], default=0)
-    try:
-        return json.loads(raw[start:])
-    except json.JSONDecodeError as e:
-        raise LLMError(f"{model}: reply was not JSON: {text[:300]}") from e
+def chat_json(messages: list, model: str, retries: int = 3, **kw):
+    """Ask for JSON and parse it, tolerating ```json fences and transient empty/malformed replies."""
+    last_err: Exception | None = None
+    for attempt in range(retries):
+        text = chat(messages, model, **kw)
+        if not text:
+            last_err = LLMError(f"{model}: empty reply (None/blank)")
+            time.sleep(2 * (attempt + 1))
+            continue
+        m = re.search(r"```(?:json)?\s*(.*?)```", text, re.S)
+        raw = m.group(1) if m else text
+        start = min([i for i in (raw.find("{"), raw.find("[")) if i >= 0], default=0)
+        try:
+            return json.loads(raw[start:])
+        except json.JSONDecodeError as e:
+            last_err = LLMError(f"{model}: reply was not JSON: {text[:300]}")
+            last_err.__cause__ = e
+            time.sleep(2 * (attempt + 1))
+    raise last_err or LLMError(f"{model}: failed to get JSON")
 
 
 def credit_remaining() -> float | None:

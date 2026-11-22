@@ -33,7 +33,7 @@
     },
     {
       "slug": "dinosaurs-bold-easy",
-      "status": "needs-attention",
+      "status": "built",
       "theme": "Cute dinosaurs, bold and easy",
       "ages": "3-6",
       "why": "Evergreen boys' favourite, called 'still rising' for 2026",
@@ -41,11 +41,29 @@
     },
     {
       "slug": "aussie-animals-bold-easy",
-      "status": "needs-attention",
+      "status": "todo",
       "theme": "Australian animals (koala, kangaroo, wombat, platypus, echidna, kookaburra, quokka, emu...) bold and easy",
       "ages": "2-5",
       "why": "Home market; Aussie Cosy books by Mimimoo sell at 4.8-5 stars with little competition",
       "format": "100-duplex"
+    },
+    {
+      "slug": "mandalas-relaxing",
+      "status": "built",
+      "prebuilt": true,
+      "theme": "Bold & easy mandalas (easy to intricate)",
+      "ages": "8+",
+      "why": "Zero-cost procedural interior; evergreen mindfulness/all-ages gift niche",
+      "format": "50-single"
+    },
+    {
+      "slug": "spooky-cute-bold-easy",
+      "status": "todo",
+      "style": "cozy",
+      "format": "50-single",
+      "theme": "Spooky cute plushie monsters, friendly ghosts and cosy haunted scenes (100% original characters)",
+      "ages": "8+",
+      "why": "High-demand creepy-cute bold & easy niche, original IP"
     },
     {
       "slug": "cozy-aussie-life",

@@ -1,0 +1,110 @@
+{
+  "title": "Spooky Cute Plushies & Cozy Monsters Coloring Book",
+  "title_lines": [
+    "Spooky Cute",
+    "Coloring Book"
+  ],
+  "subtitle": "50 Bold & Easy Creepy-Cute Plushie Monsters, Friendly Ghosts & Cozy Scenes for Kids, Teens & Adults",
+  "cover_subtitle": "50 Bold & Easy Spooky-Cute Pages",
+  "badge": "AGES\n8+",
+  "cover_tagline": "Creepy-cute cosy fun for all ages",
+  "cover_accent": "#7B3FE4",
+  "cover_bg": "#F4EEFF",
+  "back_heading": "Cute, Cosy & A Little Spooky!",
+  "back_text": [
+    "Step into a playful world of stitched plushie monsters, sleepy little ghosts, friendly bats, and cosy moonlit rooms. Every illustration is 100% original and drawn with thick, clean outlines.",
+    "Designed in the popular bold-and-easy cosy style, these 50 single-sided pages give you big, relaxing shapes to colour with alcohol markers, gel pens, or coloured pencils.",
+    "Single-sided pages with blank backs help prevent bleed-through — perfect for teens, adults, and older kids who love spooky-cute aesthetics all year round."
+  ],
+  "page_background": "simple cosy spooky details like little stars, crescent moons, cobwebs in corners, tiny pumpkins, candles or floorboards; clean and uncluttered",
+  "keywords": [
+    "spooky cute coloring book bold and easy",
+    "creepy cute coloring book teens adults",
+    "cute monster plushie coloring book",
+    "pastel goth bold easy coloring pages",
+    "cozy spooky coloring book markers",
+    "friendly ghost halloween coloring book",
+    "bold and easy creepy cute coloring"
+  ],
+  "categories": [
+    "Books > Arts & Photography > Drawing > Coloring Books for Grown-Ups > Fantasy & Sci-Fi",
+    "Books > Children's Books > Activities, Crafts & Games > Coloring Books"
+  ],
+  "description_html": "<p><b>50 original spooky-cute plushie monsters and cosy haunted scenes!</b></p><p>Love cute-but-creepy characters? This bold-and-easy colouring book is packed with stitched plushie critters, friendly ghosts, potion shops, and cosy autumn nights.</p><ul><li>50 single-sided pages (blank backs to help prevent marker bleed-through)</li><li>Thick, bold outlines and clean spaces — satisfying for markers, gel pens, and pencils</li><li>Original stitched plushies, cyclops critters, tea-drinking ghosts, witchy cats, and cosy spooky rooms</li><li>Large 8.5 x 11 inch format</li></ul><p>A fun, relaxing gift for teens, adults, and older kids who love spooky-cute vibes all year round.</p>",
+  "cover_prompt": "An original, adorable spooky-cute group of friends in a cosy moonlit pumpkin patch: a fluffy smiling teal stitched plushie monster with button eyes, a friendly little white ghost holding hot cocoa, a cute purple one-eyed cyclops critter with a bow tie, a smiling black cat in a witch hat, and a happy little bat.",
+  "cover_art": "art/spooky-cute-bold-easy/option-1.png",
+  "reading_age": "8-99",
+  "aplus_heading": "50 Spooky Cute Pages",
+  "aplus_caption": "Bold & easy creepy-cute plushies and cosy scenes",
+  "seed": 61904,
+  "format": "50-single",
+  "price_usd": 9.99,
+  "ai_disclosure": {
+    "images": "AI-generated, cleaned to black & white",
+    "text": "AI-generated (Antigravity)"
+  },
+  "niche_test": {
+    "niche": "Spooky cute / creepy-cute plushie monsters bold & easy (original IP)",
+    "hypothesis": "High-demand creepy-cute / pastel-spooky bold & easy niche, 100% original characters",
+    "planned_by": "antigravity"
+  },
+  "sections": [
+    {
+      "type": "ai_pages",
+      "single_sided": true,
+      "style": "cozy",
+      "pages": [
+        {"label": "STITCHED PLUSH", "subject": "an adorable smiling stitched plushie monster with button eyes and floppy ears sitting on a cosy rug beside a teacup"},
+        {"label": "COCOA GHOST", "subject": "a cute round little ghost wearing a knitted scarf and holding a steaming mug of hot cocoa with marshmallows"},
+        {"label": "CYCLOPS CRITTER", "subject": "a friendly round one-eyed plushie monster wearing a tiny polka-dot bow tie and sitting among stars"},
+        {"label": "WITCHY CAT", "subject": "a plump black cat wearing a crooked witch hat curled up on a stack of spellbooks next to a candle"},
+        {"label": "SLEEPY BAT", "subject": "a cute round baby bat hanging upside down from a crescent moon wearing a tiny nightcap"},
+        {"label": "PUMPKIN PUPPY", "subject": "a friendly little skeleton-costume puppy sitting inside a hollowed-out smiling pumpkin"},
+        {"label": "POTION SHELF", "subject": "a cosy wooden apothecary shelf filled with round glass potion bottles, tiny crystals, a sleeping frog and a candle"},
+        {"label": "PLUSH TEA PARTY", "subject": "two cute stitched ragdoll monster plushies having a tea party at a small round table with cupcakes"},
+        {"label": "MOTH FRIEND", "subject": "a fluffy cute luna moth wearing a tiny flower crown resting on a glowing lantern"},
+        {"label": "SPOOKY BOOKSHOP", "subject": "a cosy armchair in a spooky-cute bookshop with floating candles, tall bookshelves and a curled-up cat"},
+        {"label": "MUMMY BUNNY", "subject": "a cute chubby bunny wrapped in loose cosy bandages holding a little plush carrot"},
+        {"label": "GHOST BAKERY", "subject": "a friendly little ghost wearing a baker's hat decorating skull-shaped cookies on a kitchen counter"},
+        {"label": "FROG WITCH", "subject": "a plump cute frog wearing a tall pointed witch hat stirring a bubbling cauldron with stars"},
+        {"label": "PATCHWORK BEAR", "subject": "a cute patchwork teddy bear with stitched heart patches sitting on a moonlit windowsill"},
+        {"label": "CANDLELIT DESK", "subject": "a cosy wooden desk with an open diary, feather quill, dripping pillar candles, crystals and a tiny potted cactus"},
+        {"label": "ZOMBIE KITTEN", "subject": "a cute playful stitched-up plushie kitten chasing a ball of yarn near little stars"},
+        {"label": "HAUNTED TEACUP", "subject": "a tiny friendly ghost peeking out of a fancy patterned teacup surrounded by biscuits"},
+        {"label": "CRYSTAL BALL", "subject": "a glowing round crystal ball on a cushion with stars, moons, tarot-style cards and a cute spider dangling above"},
+        {"label": "SPIDER SWEATER", "subject": "a cute round fuzzy spider wearing a cosy striped sweater holding eight little mugs"},
+        {"label": "VAMPIRE BATHTUB", "subject": "a cute little plushie bat relaxing in a clawfoot bathtub full of bubbles with a rubber ducky"},
+        {"label": "MOONLIGHT PICNIC", "subject": "a stitched monster and a tiny ghost sharing a moonlit picnic on a checkered blanket with pies and lanterns"},
+        {"label": "SKELETON DANCE", "subject": "a friendly smiling cartoon skeleton wearing a cosy beanie hat playing an acoustic guitar"},
+        {"label": "PUMPKIN COTTAGE", "subject": "a whimsical cosy cottage shaped like a giant pumpkin with a crooked chimney, round door and glowing windows"},
+        {"label": "GHOST GARDENER", "subject": "a cute ghost wearing a sun hat watering glowing moonflowers and plump little pumpkins"},
+        {"label": "PLUSHIE WORKSHOP", "subject": "a cosy craft table with a sewing machine, buttons, spools of thread, and two cute half-finished plushie monsters"},
+        {"label": "OWL POST", "subject": "a fluffy round barn owl wearing tiny spectacles perched on a lantern post under a crescent moon"},
+        {"label": "MONSTER BEDROOM", "subject": "a cosy bedroom with a canopy bed, plushie toys, fairy lights, a crescent moon rug and rain outside the window"},
+        {"label": "CANDY CAULDRON", "subject": "a big round cauldron overflowing with wrapped candies, lollipops and little stars"},
+        {"label": "RAVEN CAFE", "subject": "a cute round raven wearing an apron serving iced coffee at a tiny spooky-cute cafe counter"},
+        {"label": "TWO-HEADED PLUSH", "subject": "a goofy friendly two-headed stitched plushie monster wearing matching knitted beanies"},
+        {"label": "COZY GRAVEYARD", "subject": "a peaceful moonlit garden with cute rounded headstones, glowing fireflies, mushrooms and a sleeping cat"},
+        {"label": "MUSHROOM CIRCLE", "subject": "three cute little ghosts dancing in a circle of big spotted toadstool mushrooms"},
+        {"label": "WITCHY KITCHEN", "subject": "a cosy kitchen stove with a simmering pot, hanging dried herbs, pumpkin pies and a curious cat"},
+        {"label": "BUTTON DRAGON", "subject": "a tiny chubby stitched plushie dragon with button eyes curled up around a pile of shiny buttons"},
+        {"label": "GHOSTLY LAUNDRY", "subject": "cute little ghost sheets and striped socks hanging on a clothesline between two crooked trees"},
+        {"label": "JACK-O-LANTERN", "subject": "a stack of three smiling carved pumpkins with a tiny mouse peeking out of the top one"},
+        {"label": "BUBBLE POTION", "subject": "a cute stitched monster blowing giant heart-shaped bubbles from a potion bottle"},
+        {"label": "COSY ATTIC", "subject": "a warm dusty attic nook with a round window, old trunk, glowing lantern and a friendly ghost reading"},
+        {"label": "TARANTULA TEA", "subject": "a cute chubby spider sitting on a toadstool knitting a very long cosy scarf"},
+        {"label": "MONSTER SKATE", "subject": "a happy fluffy three-eyed plushie monster riding a skateboard past a crescent moon"},
+        {"label": "STARRY BOAT", "subject": "a little ghost and a black cat paddling a wooden rowboat across a starry pond with lily pads"},
+        {"label": "SWEET SHOP", "subject": "a cosy candy shop window filled with jars of eyeballs-gummies, bat cookies and caramel apples"},
+        {"label": "STITCHED BUNNY", "subject": "a floppy-eared stitched plushie bunny hugging a tiny crescent moon pillow"},
+        {"label": "RAINY WINDOW", "subject": "a cute little monster sitting by a rainy arched window with a blanket and a warm bowl of soup"},
+        {"label": "FOREST LANTERN", "subject": "a friendly will-o-wisp ghost carrying a glowing lantern along a mushroom path"},
+        {"label": "PLUSHIE PILE", "subject": "a big cosy pile of six different cute stitched plushie monsters, ghosts and bats snuggled together"},
+        {"label": "CAULDRON BATH", "subject": "a cute little imp-horned plushie soaking in a warm steaming cauldron tub with flower petals"},
+        {"label": "GHOST CAMPFIRE", "subject": "two little ghosts and a bat roasting marshmallows around a cosy campfire under the stars"},
+        {"label": "SPELLBOOK NOOK", "subject": "a giant open spellbook on a table with glowing stars, a sleeping kitten and tiny potted ferns"},
+        {"label": "SPOOKY FRIENDS", "subject": "the stitched plushie monster, cocoa ghost, cyclops critter and witchy cat waving together under a big full moon"}
+      ]
+    }
+  ]
+}

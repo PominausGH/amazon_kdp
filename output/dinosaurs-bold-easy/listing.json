@@ -1,0 +1,44 @@
+{
+  "binding": "paperback",
+  "title": "Dinosaur Bold & Easy Coloring Book for Kids",
+  "subtitle": "50 Big, Simple Cute Dinosaur Pictures with Thick Lines for Toddlers, Preschoolers & Kids Ages 3-6",
+  "author": "Crayon Cove Press",
+  "description_html": "<p><b>Big, bold dinosaurs for little hands to colour!</b></p><p>50 cute and friendly dinosaur designs with thick outlines and large spaces: perfect first colouring for toddlers, preschoolers and early school-age kids.</p><ul><li>50 single-sided pages (blank backs, no bleed-through)</li><li>Thick, bold lines and big open spaces, easy to colour inside</li><li>T-Rex, Triceratops, Stegosaurus, baby dinos, sea reptiles, and silly dinos at a party, on a skateboard or in space</li><li>Each picture is labelled with a big hollow word to colour too</li><li>Large 8.5 x 11 inch pages</li></ul><p>A great gift for any dinosaur-loving child ages 3-6, ideal for birthdays, car trips and quiet time.</p>",
+  "keywords": [
+    "dinosaur coloring book for toddlers",
+    "dinosaur coloring book ages 3-6",
+    "bold and easy dinosaur coloring pages",
+    "big simple coloring book thick lines",
+    "dinosaur gifts for boys 3 4 5 years old",
+    "preschool dinosaur activity book",
+    "easy coloring book for kids T-Rex"
+  ],
+  "categories": [
+    "Books > Children's Books > Activities, Crafts & Games > Coloring Books",
+    "Books > Children's Books > Animals > Dinosaurs & Prehistoric Life"
+  ],
+  "reading_age": "3-6",
+  "trim": "8.5x11",
+  "bleed": false,
+  "paper": "white",
+  "interior": "black & white",
+  "low_content_book": false,
+  "page_count": 104,
+  "cover_size_in": [
+    17.4842,
+    11.25
+  ],
+  "price_usd": 9.99,
+  "est_print_cost_usd": 2.84,
+  "est_royalty_usd": 3.15,
+  "cover_finish": "matte",
+  "ai_disclosure": {
+    "images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
+    "text": "AI-generated (Claude)"
+  },
+  "niche_test": {
+    "niche": "Cute dinosaurs, bold and easy",
+    "hypothesis": "Evergreen boys' favourite, called 'still rising' for 2026",
+    "planned_by": "anthropic/claude-sonnet-5.5"
+  }
+}
