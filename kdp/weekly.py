@@ -67,6 +67,15 @@ def make_pages(slug: str, recipe_path: Path, log: list[str]) -> list[str]:
         log.append(f"  review round {rnd}: {len(present) - len(bad)}/{len(items)} pages pass")
         if not failing or rnd == MAX_REDRAW_ROUNDS:
             break
+        # A reviewer outage says nothing about the page: keep it (it stays "failing" so it is reported),
+        # and only redraw pages the reviewer actually rejected.
+        unreviewed = [p for p in bad if results[p].get("error")]
+        if unreviewed:
+            log.append(f"    {len(unreviewed)} pages not reviewed (reviewer error): kept, not redrawn")
+        failing = [(p, probs) for p, probs in failing if p not in unreviewed]
+        if not failing:
+            failing = [(p, results[p]["problems"]) for p in unreviewed]
+            break
         for p, probs in failing:
             log.append(f"    redraw {p.name}: {'; '.join(probs)[:120]}")
             p.unlink(missing_ok=True)
