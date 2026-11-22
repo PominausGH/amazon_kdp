@@ -6,14 +6,14 @@
     "Coloring Book"
   ],
   "subtitle": "50 Big, Simple Dino Pictures with Santa Hats, Presents & Snowmen for Toddlers & Kids Ages 3-6",
-  "cover_subtitle": "50 Big, Simple Pictures to Colour",
+  "cover_subtitle": "50 Big, Simple Pictures to Color",
   "badge": "AGES\n3-6",
   "cover_tagline": "Friendly dinos celebrate Christmas!",
   "cover_accent": "#D6213A",
   "cover_bg": "#EAF6FF",
   "back_heading": "Roar! It's Christmas!",
   "back_text": [
-    "Meet 50 friendly dinosaurs getting ready for Christmas! They're wearing Santa hats, decorating the tree, baking cookies, pulling the sleigh and building snow-dinos. Every picture has one big, simple subject with thick outlines, so little hands can colour with confidence.",
+    "Meet 50 friendly dinosaurs getting ready for Christmas! They're wearing Santa hats, decorating the tree, baking cookies, pulling the sleigh and building snow-dinos. Every picture has one big, simple subject with thick outlines, so little hands can color with confidence.",
     "Each design sits on its own single-sided page with a blank back, so crayons, markers and paint pens won't bleed through. Perfect for toddlers and preschoolers learning to hold a crayon and stay inside the lines.",
     "A fun, cosy activity for rainy days, quiet time, holiday travel or the lead-up to Christmas morning."
   ],
@@ -31,7 +31,7 @@
     "Books > Children's Books > Activities, Crafts & Games > Coloring Books",
     "Books > Children's Books > Holidays & Celebrations > Christmas"
   ],
-  "description_html": "<p><b>Friendly dinosaurs get ready for Christmas in 50 big, simple pictures!</b></p><p>Bold and easy designs with thick outlines and large spaces: perfect first colouring for toddlers and preschoolers.</p><ul><li>50 pictures, each on its own page with a blank back (no marker bleed-through)</li><li>Thick, bold lines and one big subject per page, easy for little hands</li><li>T-Rex decorating the tree, a dino pulling the sleigh, presents, stockings, gingerbread, snowmen, candy canes, sledding and cookie baking</li><li>Cute, friendly, original dinosaurs in Santa hats, elf hats and scarves</li><li>Large 8.5 x 11 inch pages</li></ul><p>A fun stocking stuffer or Christmas gift for dinosaur-loving kids ages 3-6.</p>",
+  "description_html": "<p><b>Friendly dinosaurs get ready for Christmas in 50 big, simple pictures!</b></p><p>Bold and easy designs with thick outlines and large spaces: perfect first coloring for toddlers and preschoolers.</p><ul><li>50 pictures, each on its own page with a blank back (no marker bleed-through)</li><li>Thick, bold lines and one big subject per page, easy for little hands</li><li>T-Rex decorating the tree, a dino pulling the sleigh, presents, stockings, gingerbread, snowmen, candy canes, sledding and cookie baking</li><li>Cute, friendly, original dinosaurs in Santa hats, elf hats and scarves</li><li>Large 8.5 x 11 inch pages</li></ul><p>A fun stocking stuffer or Christmas gift for dinosaur-loving kids ages 3-6.</p>",
   "cover_prompt": "A bright, cheerful Christmas scene for kids: a smiling green T-Rex in a Santa hat decorating a big Christmas tree with a gold star, a cute Stegosaurus in an elf hat, a friendly Triceratops in a red scarf holding a candy cane, a happy snowman wearing a dinosaur hat, and a pile of wrapped presents and a gingerbread dino cookie, soft falling snow and rounded snowy hills, no text.",
   "reading_age": "3-6",
   "aplus_heading": "Dinos Love Christmas!",
@@ -247,7 +247,7 @@
     }
   ],
   "format": "50-single",
-  "price_usd": 9.99,
+  "price_usd": 10.99,
   "ai_disclosure": {
     "images": "AI-generated (Google Gemini via OpenRouter), cleaned to black & white",
     "text": "AI-generated (Claude)"
