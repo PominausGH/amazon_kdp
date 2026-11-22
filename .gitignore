@@ -3,3 +3,4 @@ __pycache__/
 art/_lowres/
 .playwright-mcp/
 reports/slowbuild.log
+reports/.slowbuild.lock

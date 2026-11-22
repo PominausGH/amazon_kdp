@@ -140,6 +140,13 @@ def main():
     args = sys.argv[1:]
     if not args:
         sys.exit(__doc__)
+    import fcntl
+    lock = open(ROOT / "reports" / ".slowbuild.lock", "w")
+    try:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        log("another slowbuild is already running: exiting")
+        return
     slugs = weekly_slugs() if args == ["--weekly"] else args
     log(f"books: {', '.join(slugs) or 'none due'}")
     for slug in slugs:
